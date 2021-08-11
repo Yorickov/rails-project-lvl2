@@ -27,31 +27,31 @@ jobs:
         #   --health-retries 5
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Install postgres dependencies
-      run: npm ci
+      - name: Install postgres dependencies
+        run: npm ci
 
-    - name: Connect to PostgreSQL
-      run: node client.js
-      env:
-          POSTGRES_HOST: postgres
-          POSTGRES_PORT: 5432
+      - name: Connect to PostgreSQL
+        run: node client.js
+        env:
+            POSTGRES_HOST: postgres
+            POSTGRES_PORT: 5432
 
-    - name: Set up Node-js
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-        cache: 'yarn'
+      - name: Set up Node-js
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
 
-    - name: Set up Ruby 3.0.1
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.0.1
-        bundler-cache: true
+      - name: Set up Ruby 3.0.1
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.1
+          bundler-cache: true
 
-    - name: Install ruby dependencies
-      run: make ci-setup
+      - name: Install ruby dependencies
+        run: make ci-setup
 
-    - name: Run rubocop and test
-      run: make check
+      - name: Run rubocop and test
+        run: make check
