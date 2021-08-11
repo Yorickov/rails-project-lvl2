@@ -20,3 +20,7 @@ make start # run server
 
 make seed # load fixtures
 ```
+
+## Deploy
+
+[Heroku](https://blog-collective.herokuapp.com/)
