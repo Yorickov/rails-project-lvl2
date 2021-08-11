@@ -39,7 +39,7 @@ jobs:
             POSTGRES_PORT: 5432
 
       - name: Set up Node-js
-      - uses: actions/setup-node@v2
+        uses: actions/setup-node@v2
         with:
           node-version: '16'
           cache: 'yarn'
