@@ -1,6 +1,9 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Yorickov/rails-project-lvl2/workflows/hexlet-check/badge.svg?branch=)](https://github.com/Yorickov/rails-project-lvl2/actions?query=branch:)
 
+### Author tests and linter status:
+[![Actions Status](https://github.com/Yorickov/rails-project-lvl2/workflows/master/badge.svg)](https://github.com/Yorickov/rails-project-lvl2/actions)
+
 # Blog
 
 ## System dependencies
