@@ -1,5 +1,4 @@
 setup:
-	cp -n .env.example .env || true
 	bin/setup
 	bin/rails db:fixtures:load
 
@@ -11,17 +10,10 @@ test:
 
 check: lint test
 
-ci-setup:
-	cp -n .env.example .env || true
-	yarn install
-	bundle install --without production development
-	RAILS_ENV=test bin/rails db:prepare
-	# bin/rails db:fixtures:load
-
 start:
 	bin/rails s
 
-c:
+console:
 	bin/rails console
 
 seed:
