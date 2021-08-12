@@ -1,4 +1,4 @@
-name: CI
+name: custom-check
 
 on:
   push:
@@ -9,49 +9,44 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: node:10.18-jessie
 
     services:
       postgres:
         image: postgres
         env:
           POSTGRES_PASSWORD: postgres
-        #   POSTGRES_USER: postgres
-        #   POSTGRES_DB: postgres
-        # ports:
-        # - 5432:5432
-        # options: >-
-        #   --health-cmd pg_isready
-        #   --health-interval 10s
-        #   --health-timeout 5s
-        #   --health-retries 5
+        ports: ["5432:5432"]
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Install postgres dependencies
-        run: npm ci
+      - name: Setup ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
 
-      - name: Connect to PostgreSQL
-        run: node client.js
-        env:
-            POSTGRES_HOST: postgres
-            POSTGRES_PORT: 5432
-
-      - name: Set up Node-js
+      - name: Set up node
         uses: actions/setup-node@v2
         with:
           node-version: '16'
           cache: 'yarn'
 
-      - name: Set up Ruby 3.0.1
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.0.1
-          bundler-cache: true
+      - name: Install node packages
+        run: yarn install --pure-lockfile
 
-      - name: Install ruby dependencies
-        run: make ci-setup
+      - name: Run linters
+        run: make lint
 
-      - name: Run rubocop and test
-        run: make check
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+        run: |
+          bin/rails db:prepare
+          make test
