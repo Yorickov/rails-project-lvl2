@@ -41,7 +41,9 @@ jobs:
         run: yarn install --pure-lockfile
 
       - name: Run linters
-        run: make lint
+        run: |
+          make lint
+          make brake
 
       - name: Run tests
         env:

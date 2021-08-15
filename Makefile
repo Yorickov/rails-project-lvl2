@@ -8,7 +8,10 @@ lint:
 test:
 	bin/rails test
 
-check: lint test
+brake:
+	bundle exec brakeman -q -w2
+
+check: lint brake test
 
 start:
 	bin/rails s
