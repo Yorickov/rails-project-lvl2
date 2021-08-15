@@ -25,4 +25,7 @@ seed:
 push:
 	git push -u origin master
 
+deploy:
+	git push heroku master
+
 .PHONY:	test
