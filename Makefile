@@ -11,10 +11,13 @@ test:
 brake:
 	bundle exec brakeman -q -w2
 
-check: lint brake test
+check: lint test
+
+test-coverage:
+	open coverage/index.html
 
 start:
-	bin/rails s
+	heroku local
 
 console:
 	bin/rails console
@@ -27,5 +30,11 @@ push:
 
 deploy:
 	git push heroku master
+
+heroku-console:
+	heroku run rails console
+
+heroku-logs:
+	heroku logs --tail
 
 .PHONY:	test
