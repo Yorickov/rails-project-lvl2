@@ -1,0 +1,11 @@
+ru:
+  hello: Привет, это коллективный блог
+  title: Коллективный блог
+
+  helpers:
+    select:
+      prompt: 'Выберите: '
+    submit:
+      create: Создать %{model}
+      submit: Сохранить %{model}
+      update: Сохранить %{model}

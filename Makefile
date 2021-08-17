@@ -16,7 +16,16 @@ check: lint test
 test-coverage:
 	open coverage/index.html
 
+webpack:
+	bin/webpack-dev-server
+
+clean:
+	rake assets:clobber
+
 start:
+	bin/rails s
+
+heroku-start:
 	heroku local
 
 console:
