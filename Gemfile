@@ -42,6 +42,7 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'annotate'
   gem 'brakeman'
+  gem 'letter_opener'
   gem 'listen', '~> 3.3'
   gem 'pry-rails'
   gem 'rack-mini-profiler', '~> 2.0'
@@ -70,3 +71,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'rails-i18n', '~> 6.0.0'
 gem 'simple_form'
 gem 'slim-rails'
+
+gem 'devise'
+gem 'devise-i18n'

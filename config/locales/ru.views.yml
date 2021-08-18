@@ -1,0 +1,7 @@
+ru:
+  layouts:
+    shared:
+      navigation:
+        login: Войти
+        logout: Выйти
+        sign_up: Регистрация

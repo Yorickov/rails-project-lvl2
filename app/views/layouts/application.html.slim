@@ -1,9 +1,12 @@
 doctype html
-html lang='en'
+html.h-100 lang="#{I18n.locale}"
   head
     = render 'layouts/shared/head'
 
-  body
-    .container-fluid.mt-3
-      main
+  body.d-flex.flex-column.h-100
+    header
+      = render 'layouts/shared/navigation'
+
+    .container-fluid.my-3
+      main.flex-grow-1
         = yield

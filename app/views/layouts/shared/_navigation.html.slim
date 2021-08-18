@@ -1,0 +1,18 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container-fluid
+    = link_to t('title'), root_path, class: 'navbar-brand'
+
+    button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" \
+                          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation")
+      span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbarNavDropdown
+      ul.navbar-nav.ms-auto
+        - if user_signed_in?
+          li.nav-item.active.dropdown
+            a.nav-link.dropdown-toggle(id="navbarDropdownMenuLink" role="button" \
+                                       data-bs-toggle="dropdown" aria-expanded="false") Current_user
+            ul.dropdown-menu.dropdown-menu-right.bg-light(aria-labelledby="navbarDropdownMenuLink")
+              li = link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item ml-0'
+        - else
+          li.nav-item = link_to t('.login'), new_user_session_path, class: 'nav-link'
+          li.nav-item = link_to t('.sign_up'), new_user_registration_path, class: 'nav-link'

@@ -7,6 +7,15 @@ class ApplicationController < ActionController::Base
     I18n.locale == I18n.default_locale ? {} : { lang: I18n.locale }
   end
 
+  # TODO: precise path
+  def after_sign_in_path_for(_user)
+    root_path
+  end
+
+  def after_sign_out_path_for(_resource_or_scope)
+    request.referer
+  end
+
   private
 
   def switch_locale(&action)

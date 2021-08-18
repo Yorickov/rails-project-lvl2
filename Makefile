@@ -25,6 +25,9 @@ clean:
 start:
 	bin/rails s
 
+dbm:
+	bin/rails db:migrate
+
 heroku-start:
 	heroku local
 

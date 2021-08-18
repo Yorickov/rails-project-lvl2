@@ -1,6 +1,7 @@
 en:
   hello: Hello, this is collective blog
-  title: Collective blog
+  title: Collective Blog
+  welcome: 'Welcome, %{user}'
 
   helpers:
     select:
