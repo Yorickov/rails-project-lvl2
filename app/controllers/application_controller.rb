@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   # TODO: precise path
   def after_sign_in_path_for(_user)
+    flash['notice'] = t('welcome', user: current_user.email)
     root_path
   end
 
