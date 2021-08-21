@@ -36,6 +36,10 @@ DEFAULTS: &DEFAULTS
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   confirmed_at: <%= Time.current %>
 
+admin:
+  <<: *DEFAULTS
+  email: $LABEL@email.com
+
 one:
   <<: *DEFAULTS
   email: $LABEL@email.com

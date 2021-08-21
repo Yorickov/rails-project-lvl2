@@ -5,8 +5,11 @@ html.h-100 lang="#{I18n.locale}"
 
   body.d-flex.flex-column.h-100
     header
-      = render 'layouts/shared/navigation'
+      = render 'layouts/shared/navi'
 
-    .container-fluid.my-3
-      main.flex-grow-1
+    main.flex-grow-1
+      .container
         = yield
+
+    = render 'layouts/shared/footer'
+

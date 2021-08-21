@@ -5,3 +5,5 @@ en:
         login: Log in
         logout: Log out
         sign_up: Sign up
+      footer:
+        project: Hexlet project 2

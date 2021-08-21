@@ -1,10 +1,10 @@
-nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
   .container-fluid
     = link_to t('title'), root_path, class: 'navbar-brand'
-
     button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" \
                           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation")
       span.navbar-toggler-icon
+
     .collapse.navbar-collapse#navbarNavDropdown
       ul.navbar-nav.ms-auto
         - if user_signed_in?

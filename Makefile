@@ -28,9 +28,6 @@ start:
 dbm:
 	bin/rails db:migrate
 
-heroku-start:
-	heroku local
-
 console:
 	bin/rails console
 
@@ -42,6 +39,12 @@ push:
 
 deploy:
 	git push heroku master
+
+heroku-start:
+	heroku local
+
+heroku-dbm:
+	heroku run rake db:migrate
 
 heroku-console:
 	heroku run rails console
