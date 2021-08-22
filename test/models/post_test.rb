@@ -55,6 +55,6 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test '#user' do
-    assert_equal 'one@email.com', @post.user.email
+    assert_equal 'two@email.com', @post.user.email
   end
 end

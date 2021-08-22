@@ -1,0 +1,9 @@
+.card.mb-4
+  .card-body
+    h5.card-title
+      = link_to post.title, post, class: 'text-decoration-none'
+    .card-text.text-truncate.mb-2
+      = post.body
+    .card-text.text-end.mb-1
+      small.me-3.text-muted = format_creation_time(post.created_at)
+      small.text-muted = post.user.email

@@ -1,6 +1,8 @@
 ru:
   hello: Привет, это коллективный блог
   title: Коллективный Блог
+  welcome: 'Добро пожаловать, %{user}'
+  goodbye: До свидвния
 
   helpers:
     select:

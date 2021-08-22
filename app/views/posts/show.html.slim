@@ -1,0 +1,7 @@
+.row.justify-content-center
+  article.col
+    h1.mb-3 = @post.title
+    p = @post.body
+    .d-flex.justify-content-between.aling-items-center
+      span.fst-italic = @post.user.email
+      span.fst-italic = format_creation_time(@post.created_at)

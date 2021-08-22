@@ -23,12 +23,18 @@
 
 one:
   title: $LABEL
-  body: '<%= Faker::Lorem.paragraph_by_chars(number: 200, supplemental: false) %>'
-  user: one
+  body: '<%= Faker::Lorem.paragraph_by_chars(number: 500) %>'
+  user: two
   post_category: sport
 
 two:
   title: $LABEL
   body: '<%= Faker::Lorem.paragraph_by_chars(number: 200) %>'
+  user: one
+  post_category: science
+
+three:
+  title: $LABEL
+  body: '<%= Faker::Lorem.paragraph_by_chars(number: 400) %>'
   user: two
   post_category: science

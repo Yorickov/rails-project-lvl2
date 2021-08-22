@@ -1,9 +1,15 @@
 en:
   layouts:
     shared:
-      navigation:
+      navi:
         login: Log in
         logout: Log out
         sign_up: Sign up
+        posts: Posts
+        add_post: Add post
       footer:
-        project: Hexlet project 2
+        project: 'Hexlet: Rails project-2'
+
+  posts:
+    new:
+      create_post: Create post

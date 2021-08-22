@@ -1,7 +1,15 @@
 ru:
   layouts:
     shared:
-      navigation:
+      navi:
         login: Войти
         logout: Выйти
         sign_up: Регистрация
+        posts: Посты
+        add_post: Добавить пост
+      footer:
+        project: 'Hexlet: Проект Rails-2'
+
+  posts:
+    new:
+      create_post: Создать пост

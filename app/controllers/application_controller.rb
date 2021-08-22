@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(_resource_or_scope)
+    flash['notice'] = t('goodbye')
     request.referer
   end
 
