@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: post_categories
+#
+#  id         :bigint           not null, primary key
+#  name       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+travel:
+  name: $LABEL
+
+science:
+  name: $LABEL
+
+sport:
+  name: $LABEL
+
+humor:
+  name: $LABEL

@@ -31,7 +31,9 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test '#posts' do
+    @user = users(:one)
+
+    assert_equal 1, @user.posts.size
+  end
 end
