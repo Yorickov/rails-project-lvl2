@@ -9,7 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-Category.destroy_all
+PostCategory.destroy_all
 
 User.create!(
   [

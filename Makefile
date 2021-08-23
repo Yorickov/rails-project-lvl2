@@ -50,7 +50,7 @@ heroku-console:
 	heroku run rails console
 
 heroku-seed:
-	heroku run rake db:fixtures:load
+	heroku run rake db:seed
 
 heroku-logs:
 	heroku logs --tail
