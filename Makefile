@@ -49,6 +49,9 @@ heroku-dbm:
 heroku-console:
 	heroku run rails console
 
+heroku-seed:
+	heroku run rake db:fixtures:load
+
 heroku-logs:
 	heroku logs --tail
 
