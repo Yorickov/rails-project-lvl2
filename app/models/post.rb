@@ -27,5 +27,10 @@ class Post < ApplicationRecord
   belongs_to :post_category
   has_many :post_comments, dependent: :destroy
 
-  validates :title, :body, presence: true
+  validates :title, presence: true
+  validates :body, presence: true, length: { minimum: 50 }
+
+  def to_s
+    title
+  end
 end

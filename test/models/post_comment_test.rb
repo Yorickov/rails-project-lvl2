@@ -29,25 +29,17 @@ class PostCommentTest < ActiveSupport::TestCase
   def setup
     @post_comment = post_comments(:one)
     @presence_message = "can't be blank"
-    @wrong_length = 'is too long (maximum is 100 characters)'
   end
 
   test 'valid' do
     assert @post_comment.valid?
   end
 
-  test 'invalid without comment' do
+  test 'invalid without content' do
     @post_comment.content = nil
 
     assert_not @post_comment.valid?
     assert_equal [@presence_message], @post_comment.errors[:content]
-  end
-
-  test 'invalid wrong length' do
-    @post_comment.content = @post_comment.content * 100
-
-    assert_not @post_comment.valid?
-    assert_equal [@wrong_length], @post_comment.errors[:content]
   end
 
   test '#post' do
