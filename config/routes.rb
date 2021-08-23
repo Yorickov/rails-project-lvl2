@@ -28,5 +28,7 @@ Rails.application.routes.draw do
 
   root 'landing#index'
 
-  resources :posts, except: %i[edit update destroy]
+  resources :posts, except: %i[edit update destroy] do
+    resources :post_comments, only: %i[index new create]
+  end
 end

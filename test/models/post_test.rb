@@ -57,4 +57,8 @@ class PostTest < ActiveSupport::TestCase
   test '#user' do
     assert_equal 'two@email.com', @post.user.email
   end
+
+  test '#post_comments' do
+    assert_equal 1, @post.post_comments.size
+  end
 end
