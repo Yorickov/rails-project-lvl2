@@ -5,5 +5,5 @@
     .card-text.text-truncate.mb-2
       = post.body
     .card-text.text-end.mb-1
-      small.me-3.text-muted = format_creation_time(post.created_at)
+      small.me-3.text-muted = time_ago(post.created_at)
       small.text-muted = post.user.email

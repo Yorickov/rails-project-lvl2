@@ -23,11 +23,15 @@
 #
 require 'test_helper'
 
-class PostCommentTest < ActiveSupport::TestCase
+class Post::CommentTest < ActiveSupport::TestCase
   self.use_transactional_tests = true
 
   def setup
-    @post_comment = post_comments(:one)
+    @post_comment = Post::Comment.new(
+      content: Faker::Lorem.paragraph_by_chars(number: 10),
+      user: users(:two),
+      post: posts(:one)
+    )
     @presence_message = "can't be blank"
   end
 
@@ -43,7 +47,7 @@ class PostCommentTest < ActiveSupport::TestCase
   end
 
   test '#post' do
-    assert_equal 'two', @post_comment.post.title
+    assert_equal 'one', @post_comment.post.title
   end
 
   test '#user' do

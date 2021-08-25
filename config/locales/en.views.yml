@@ -13,3 +13,8 @@ en:
   posts:
     new:
       create_post: Create post
+    show:
+      comment: Comment
+    comments:
+      comment:
+        reply: Reply

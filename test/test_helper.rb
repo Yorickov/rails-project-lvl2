@@ -15,6 +15,9 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  # Does not work
+  # set_fixture_class 'post/comments' => Post::Comment
+
   # Add more helper methods to be used by all tests here...
 end
 

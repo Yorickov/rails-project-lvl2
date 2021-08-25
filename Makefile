@@ -55,4 +55,7 @@ heroku-seed:
 heroku-logs:
 	heroku logs --tail
 
+annotate:
+	bundle exec annotate --models --routes
+
 .PHONY:	test

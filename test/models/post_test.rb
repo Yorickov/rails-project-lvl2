@@ -67,6 +67,6 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test '#post_comments' do
-    assert_equal 1, @post.post_comments.size
+    assert_equal 1, @post.comments.size
   end
 end

@@ -11,3 +11,6 @@ ru:
       create: Создать %{model}
       submit: Сохранить %{model}
       update: Сохранить %{model}
+
+  messages:
+    post_created: Пост создан

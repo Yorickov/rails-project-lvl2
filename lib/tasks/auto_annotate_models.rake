@@ -7,7 +7,7 @@ if Rails.env.development?
   require 'annotate'
 
   task routes: :environment do
-    puts `bin/rails routes -g 'root|landing|devise'`
+    puts `bin/rails routes -g 'root|landing|devise|post|comment'`
   end
 
   task set_annotation_options: :environment do

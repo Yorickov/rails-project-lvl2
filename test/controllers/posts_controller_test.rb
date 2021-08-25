@@ -38,7 +38,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test '#new as Guest' do
     get new_post_url
 
-    assert_redirected_to new_user_session_path
+    assert_redirected_to new_user_session_url
   end
 
   test '#create as User success' do
@@ -48,7 +48,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post posts_url, params: { post: @post_params }
     end
 
-    assert_redirected_to post_url(Post.last)
+    assert_redirected_to Post.last
   end
 
   test '#create as User failed' do
@@ -67,6 +67,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post posts_url, params: { post: @post_params }
     end
 
-    assert_redirected_to new_user_session_path
+    assert_redirected_to new_user_session_url
   end
 end

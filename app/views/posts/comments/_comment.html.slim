@@ -1,0 +1,12 @@
+- if comment.persisted?
+  .card.mt-4
+    .card-header.small.d-flex
+      span.me-3 = comment.user.email
+      span = time_ago(comment.created_at)
+
+    .card-body
+      p.card-text = comment.content
+
+    .card-footer.small
+      .card-link.text-muted
+        = link_to t('.reply'), '#', class: 'text-decoration-none text-secondary'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: post_comments
@@ -19,13 +21,13 @@
 #  fk_rails_...  (post_id => posts.id)
 #  fk_rails_...  (user_id => users.id)
 #
+class Post::Comment < ApplicationRecord
+  belongs_to :user
+  belongs_to :post
 
-one:
-  content: '<%= Faker::Lorem.paragraph_by_chars(number: 100) %>'
-  user: two
-  post: two
+  validates :content, presence: true, length: { maximum: 100 }
 
-two:
-  content: '<%= Faker::Lorem.paragraph_by_chars(number: 50) %>'
-  user: one
-  post: one
+  def to_s
+    content
+  end
+end

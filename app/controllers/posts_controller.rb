@@ -8,7 +8,9 @@ class PostsController < ApplicationController
     @posts = Post.includes(:user).all
   end
 
-  def show; end
+  def show
+    @comment = Post::Comment.new(post: @post)
+  end
 
   def new
     @post = current_user.posts.new
@@ -17,7 +19,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: t('messages.post_created')
     else
       render :new, status: :unprocessable_entity
     end

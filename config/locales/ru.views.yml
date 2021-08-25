@@ -13,3 +13,8 @@ ru:
   posts:
     new:
       create_post: Создать пост
+    show:
+      comment: Комментарий
+    comments:
+      comment:
+        reply: Ответить

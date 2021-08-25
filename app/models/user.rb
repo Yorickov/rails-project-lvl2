@@ -35,4 +35,5 @@ class User < ApplicationRecord
          :confirmable, :recoverable, :rememberable, :trackable
 
   has_many :posts, dependent: :destroy
+  has_many :post_comments, class_name: 'Post::Comment', dependent: :destroy
 end
