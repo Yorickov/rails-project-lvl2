@@ -16,5 +16,6 @@ ru:
     show:
       comment: Комментарий
     comments:
-      comment:
+      footer:
         reply: Ответить
+        auth_required: Требуетcя

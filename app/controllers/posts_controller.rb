@@ -5,11 +5,11 @@ class PostsController < ApplicationController
   before_action :load_post, only: %i[show]
 
   def index
-    @posts = Post.includes(:user).all
+    @posts = Post.includes(:user).order(created_at: :desc)
   end
 
   def show
-    @comment = Post::Comment.new(post: @post)
+    @comment = @post.comments.new
   end
 
   def new

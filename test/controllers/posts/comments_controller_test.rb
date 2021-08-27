@@ -26,7 +26,7 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
       post post_comments_url(@post_comment.post), params: { post_comment: @post_comment_params }
     end
 
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test '#create as Guest' do
@@ -34,6 +34,6 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
       post post_comments_url(@post_comment.post), params: { post_comment: @post_comment_params }
     end
 
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 end

@@ -11,7 +11,7 @@ test:
 brake:
 	bundle exec brakeman -q -w2
 
-check: lint test
+check: lint test brake
 
 test-coverage:
 	open coverage/index.html

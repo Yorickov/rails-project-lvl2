@@ -10,8 +10,8 @@
     - if user_signed_in?
       section.article-form.mb-4
         h6.mt-3 = t('.comment')
-        = render 'posts/comments/form', comment: @comment, url: post_comments_path(@post)
+        = render 'posts/comments/form', comment: @post.comments.new, url: post_comments_path(@post)
 
     - if @post.comments.any?
       section.article-comment.mb-4
-        = render partial: 'posts/comments/comment', collection: @post.comments
+        = nested_comments(@post.comments.arrange(order: :created_at))

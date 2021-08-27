@@ -14,6 +14,7 @@ en:
 
   messages:
     post_created: Post created
+    empty_comment: Comment can't be blank
 
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other

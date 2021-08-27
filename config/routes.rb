@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   resources :posts, except: %i[edit update destroy] do
     scope module: :posts do
-      resources :comments, only: :create
+      resources :comments, only: %i[create new]
     end
   end
 end

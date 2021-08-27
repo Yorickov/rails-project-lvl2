@@ -16,5 +16,6 @@ en:
     show:
       comment: Comment
     comments:
-      comment:
+      footer:
         reply: Reply
+        auth_required: Requires
