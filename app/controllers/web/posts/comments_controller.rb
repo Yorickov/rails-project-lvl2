@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Posts::CommentsController < ApplicationController
+class Web::Posts::CommentsController < Web::Posts::ApplicationController
   before_action :authenticate_user!
   before_action :load_post, only: :create
 
@@ -10,7 +10,7 @@ class Posts::CommentsController < ApplicationController
       redirect_to @post
     else
       flash.now[:notice] = t('messages.empty_comment')
-      render 'posts/show', status: :unprocessable_entity
+      render 'web/posts/show', status: :unprocessable_entity
     end
   end
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PostsController < ApplicationController
+class Web::PostsController < Web::ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :load_post, only: %i[show]
 
