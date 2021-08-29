@@ -4,11 +4,10 @@ html.h-100 lang="#{I18n.locale}"
     = render 'layouts/shared/head'
 
   body.d-flex.flex-column.h-100
-    = render 'layouts/shared/navi'
+    = render 'layouts/shared/nav'
 
     main.flex-grow-1
       .container
         = yield
 
     = render 'layouts/shared/footer'
-

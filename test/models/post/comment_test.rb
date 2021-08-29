@@ -35,6 +35,7 @@ class Post::CommentTest < ActiveSupport::TestCase
       post: posts(:one)
     )
     @presence_message = "can't be blank"
+    @length_message = 'is too long (maximum is 100 characters)'
   end
 
   test 'valid' do
@@ -46,6 +47,13 @@ class Post::CommentTest < ActiveSupport::TestCase
 
     assert_not @post_comment.valid?
     assert_equal [@presence_message], @post_comment.errors[:content]
+  end
+
+  test 'invalid with too long content' do
+    @post_comment.content = Faker::Lorem.paragraph_by_chars(number: 101)
+
+    assert_not @post_comment.valid?
+    assert_equal [@length_message], @post_comment.errors[:content]
   end
 
   test '#post' do

@@ -20,6 +20,7 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test '#create as User failed' do
     sign_in users(:one)
+
     @post_comment_params = { content: nil }
 
     assert_no_difference('Post::Comment.count') do
@@ -34,6 +35,6 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
       post post_comments_url(@post_comment.post), params: { post_comment: @post_comment_params }
     end
 
-    assert_response :unprocessable_entity
+    assert_redirected_to new_user_session_url
   end
 end

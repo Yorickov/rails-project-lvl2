@@ -1,7 +1,7 @@
 ru:
   layouts:
     shared:
-      navi:
+      nav:
         login: Войти
         logout: Выйти
         sign_up: Регистрация

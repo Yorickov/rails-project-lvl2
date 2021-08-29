@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Layout/LineLength
 # == Route Map
 #
 #                        Prefix Verb   URI Pattern                                             Controller#Action
@@ -28,6 +29,7 @@
 #                      new_post GET    /posts/new(.:format)                                    posts#new
 #                          post GET    /posts/:id(.:format)                                    posts#show
 # rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format) action_mailbox/ingresses/postmark/inbound_emails#create
+# rubocop:enable Layout/LineLength
 
 Rails.application.routes.draw do
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :posts, except: %i[edit update destroy] do
     scope module: :posts do
-      resources :comments, only: %i[create new]
+      resources :comments, only: %i[create]
     end
   end
 end

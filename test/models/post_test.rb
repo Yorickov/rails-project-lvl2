@@ -30,7 +30,7 @@ class PostTest < ActiveSupport::TestCase
   def setup
     @post = posts(:one)
     @presence_message = "can't be blank"
-    @wrong_length = 'is too short (minimum is 50 characters)'
+    @length_message = 'is too short (minimum is 50 characters)'
   end
 
   test 'valid' do
@@ -48,14 +48,14 @@ class PostTest < ActiveSupport::TestCase
     @post.body = nil
 
     assert_not @post.valid?
-    assert_equal [@presence_message, @wrong_length], @post.errors[:body]
+    assert_equal [@presence_message, @length_message], @post.errors[:body]
   end
 
   test 'invalid with body less than 50 chars' do
     @post.body = Faker::Lorem.paragraph_by_chars(number: 49)
 
     assert_not @post.valid?
-    assert_equal [@wrong_length], @post.errors[:body]
+    assert_equal [@length_message], @post.errors[:body]
   end
 
   test '#post_category' do

@@ -24,6 +24,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show post' do
     get post_url(@post)
+
     assert_response :success
   end
 
@@ -47,18 +48,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Post.count') do
       post posts_url, params: { post: @post_params }
     end
-
     assert_redirected_to Post.last
   end
 
   test '#create as User failed' do
     sign_in users(:one)
+
     @post_params[:title] = nil
 
     assert_no_difference('Post.count') do
       post posts_url, params: { post: @post_params }
     end
-
     assert_response :unprocessable_entity
   end
 
@@ -66,7 +66,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Post.count') do
       post posts_url, params: { post: @post_params }
     end
-
     assert_redirected_to new_user_session_url
   end
 end

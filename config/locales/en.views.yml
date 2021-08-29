@@ -1,7 +1,7 @@
 en:
   layouts:
     shared:
-      navi:
+      nav:
         login: Log in
         logout: Log out
         sign_up: Sign up
