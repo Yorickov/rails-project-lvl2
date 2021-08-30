@@ -10,6 +10,9 @@ import 'channels';
 import 'bootstrap/dist/js/bootstrap';
 import '../stylesheets/application.scss';
 
+import '@fortawesome/fontawesome-free/js/solid.js';
+import '@fortawesome/fontawesome-free/js/fontawesome.js';
+
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();

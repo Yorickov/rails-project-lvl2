@@ -16,6 +16,8 @@ AllCops:
 
 Layout/LineLength:
   Max: 120
+  Exclude:
+    - 'config/routes.rb'
 
 Style/Documentation:
   Enabled: false

@@ -12,7 +12,10 @@ header
           li.nav-item = link_to t('.posts'), posts_path, class: 'nav-link active'
         ul.navbar-nav.ms-auto
           - if user_signed_in?
-            li = link_to t('.add_post'), new_post_path, class: 'nav-link active'
+            li
+              = link_to new_post_path, class: 'nav-link active' do
+                i.fas.fa-plus-circle
+                span.ms-2 = t('.add_post')
             li.nav-item.active.dropdown
               a.nav-link.dropdown-toggle(id="navbarDropdownMenuLink" role="button" \
                                          data-bs-toggle="dropdown" aria-expanded="false") = current_user.email

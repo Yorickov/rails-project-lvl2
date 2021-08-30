@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Layout/LineLength
 # == Route Map
 #
 #                        Prefix Verb   URI Pattern                                             Controller#Action
@@ -22,14 +21,13 @@
 #         new_user_confirmation GET    /users/confirmation/new(.:format)                       devise/confirmations#new
 #             user_confirmation GET    /users/confirmation(.:format)                           devise/confirmations#show
 #                               POST   /users/confirmation(.:format)                           devise/confirmations#create
-#                          root GET    /                                                       landing#index
-#                 post_comments POST   /posts/:post_id/comments(.:format)                      posts/comments#create
-#                         posts GET    /posts(.:format)                                        posts#index
-#                               POST   /posts(.:format)                                        posts#create
-#                      new_post GET    /posts/new(.:format)                                    posts#new
-#                          post GET    /posts/:id(.:format)                                    posts#show
+#                          root GET    /                                                       web/landing#index
+#                 post_comments POST   /posts/:post_id/comments(.:format)                      web/posts/comments#create
+#                         posts GET    /posts(.:format)                                        web/posts#index
+#                               POST   /posts(.:format)                                        web/posts#create
+#                      new_post GET    /posts/new(.:format)                                    web/posts#new
+#                          post GET    /posts/:id(.:format)                                    web/posts#show
 # rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format) action_mailbox/ingresses/postmark/inbound_emails#create
-# rubocop:enable Layout/LineLength
 
 Rails.application.routes.draw do
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
