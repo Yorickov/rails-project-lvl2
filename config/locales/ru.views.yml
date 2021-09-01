@@ -8,14 +8,15 @@ ru:
         posts: Посты
         add_post: Добавить пост
       footer:
-        project: 'Hexlet: Проект Rails-2'
+        project: Yorickov. Хекслет Rails проект-2
 
-  posts:
-    new:
-      create_post: Создать пост
-    show:
-      comment: Комментарий
-    comments:
-      footer:
-        reply: Ответить
-        auth_required: Требуетcя
+  web:
+    posts:
+      new:
+        create_post: Создать пост
+      show:
+        comment: Комментарий
+      comments:
+        footer:
+          reply: Ответить
+          auth_required: Требуетcя

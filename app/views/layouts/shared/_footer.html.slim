@@ -1,3 +1,4 @@
-footer.py-3.bg-light
-  .container
-    span.text-muted © #{t('.project')}
+footer.p-3.bg-dark.text-light
+  .container-fluid
+    .row
+      = "© #{t('.project')}, #{Time.current.year}"
