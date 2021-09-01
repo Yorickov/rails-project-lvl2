@@ -8,6 +8,10 @@ html.h-100 lang="#{I18n.locale}"
 
     main.flex-grow-1
       .container
-        = yield
+        .row.justify-content-center
+          .col
+            - if content_for(:title)
+              h2.text-center = yield :title
+            = yield
 
     = render 'layouts/shared/footer'

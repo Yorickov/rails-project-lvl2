@@ -2,7 +2,7 @@
 
 class Web::PostsController < Web::ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :load_post, only: %i[show]
+  before_action :load_post, only: %i[show edit update destroy]
 
   def index
     @posts = Post.includes(:user).order(created_at: :desc)
@@ -23,6 +23,22 @@ class Web::PostsController < Web::ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit; end
+
+  def update
+    if @post.update(post_params)
+      redirect_to @post, notice: t('messages.post_updated')
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @post.destroy
+
+    redirect_to posts_url, notice: t('messages.post_destroy')
   end
 
   private

@@ -1,8 +1,8 @@
 ru:
+  goodbye: До свидвния
   hello: Привет, это коллективный блог
   title: Коллективный Блог
   welcome: 'Добро пожаловать, %{user}'
-  goodbye: До свидвния
 
   helpers:
     select:
@@ -12,6 +12,15 @@ ru:
       submit: Сохранить %{model}
       update: Сохранить %{model}
 
+  links:
+    back: Назад
+    delete: Удалить
+    edit: Редактировать
+    prompt: Вы уверены?
+    show: Показать
+
   messages:
-    post_created: Пост создан
     empty_comment: Комментарий не может быть пустым
+    post_destroy: Пост удален
+    post_created: Пост создан
+    post_updated: Пост абновлен

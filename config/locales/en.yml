@@ -1,8 +1,8 @@
 en:
+  goodbye: Good bye
   hello: Hello, this is collective blog
   title: Collective Blog
   welcome: 'Welcome, %{user}'
-  goodbye: Good bye
 
   helpers:
     select:
@@ -12,9 +12,18 @@ en:
       submit: Save %{model}
       update: Update %{model}
 
+  links:
+    back: Back
+    delete: Delete
+    edit: Edit
+    prompt: Are you sure?
+    show: Show
+
   messages:
-    post_created: Post created
     empty_comment: Comment can't be blank
+    post_destroy: Post destroyed
+    post_created: Post created
+    post_updated: Post updated
 
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other

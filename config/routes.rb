@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   scope module: :web do
     root 'landing#index'
 
-    resources :posts, except: %i[edit update destroy] do
+    resources :posts do
       scope module: :posts do
         resources :comments, only: %i[create]
       end
