@@ -7,6 +7,7 @@ en:
         sign_up: Sign up
         posts: Posts
         add_post: Add post
+        switch_lang: Switch language to %{lang}
       footer:
         project: Yorickov. Hexlet Rails project-2
 
@@ -20,3 +21,7 @@ en:
         footer:
           reply: Reply
           auth_required: Requires
+      post:
+        comments_count:
+          one: "%{count} comment"
+          other: "%{count} comments"

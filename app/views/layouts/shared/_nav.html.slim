@@ -1,5 +1,4 @@
 header
-  / nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
   nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
     .container-fluid
       = link_to t('title'), root_path, class: 'navbar-brand'
@@ -24,5 +23,9 @@ header
           - else
             li.nav-item = link_to t('.login'), new_user_session_path, class: 'nav-link'
             li.nav-item = link_to t('.sign_up'), new_user_registration_path, class: 'nav-link'
+          li.nav-item.d-flex.align-items-center.ms-auto
+            - I18n.available_locales.without(I18n.locale).each do |locale|
+              = link_to url_for(lang: locale) do
+                = image_pack_tag "flag-#{locale}.svg", width: 25, alt: "#{t(".switch_lang", lang: "#{locale}")}"
 
   = render_flash_messages dismissible: true

@@ -16,3 +16,6 @@ import '@fortawesome/fontawesome-free/js/fontawesome.js';
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
+
+const images = require.context("../images", true)
+const imagePath = name => images(name, true)

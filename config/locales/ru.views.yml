@@ -7,6 +7,7 @@ ru:
         sign_up: Регистрация
         posts: Посты
         add_post: Добавить пост
+        switch_lang: Поменять язык на %{lang}
       footer:
         project: Yorickov. Хекслет Rails проект-2
 
@@ -20,3 +21,9 @@ ru:
         footer:
           reply: Ответить
           auth_required: Требуетcя
+      post:
+        comments_count:
+          one: "%{count} комментарий"
+          few: "%{count} комментария"
+          many: "%{count} комментариев"
+          other: "%{count} комментария"
