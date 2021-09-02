@@ -53,6 +53,6 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def authorize_user!
-    redirect_to root_path, notice: t('.unauthorized_user') unless current_user.author_of?(@post)
+    redirect_to root_path, notice: t('messages.unauthorized_user') unless current_user.author_of?(@post)
   end
 end

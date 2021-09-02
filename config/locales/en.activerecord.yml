@@ -1,9 +1,6 @@
 en:
   activerecord:
     models:
-      user:
-        one: User
-        other: Users
       post:
         one: Post
         other: Posts
@@ -13,7 +10,21 @@ en:
       post/comment:
         one: Comment
         other: Comments
+      user:
+        one: User
+        other: Users
     attributes:
+      post:
+        body: Body
+        title: Title
+        user: User
+        post_category: Category
+      post_category:
+        name: Name
+      post/comment:
+        content: Body
+        user: User
+        post: Post
       user:
         confirmation_sent_at: Confirmation sent at
         confirmation_token: Confirmation token
@@ -38,17 +49,6 @@ en:
         unconfirmed_email: Unconfirmed email
         unlock_token: Unlock token
         updated_at: Updated at
-      post:
-        body: Body
-        title: Title
-        user: User
-        post_category: Category
-      post_category:
-        name: Name
-      post/comment:
-        content: Body
-        user: User
-        post: Post
     errors:
       format: "%{attribute} %{message}"
       messages:

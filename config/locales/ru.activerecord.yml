@@ -1,11 +1,6 @@
 ru:
   activerecord:
     models:
-      user:
-        few: Пользователя
-        many: Пользователей
-        one: Пользователь
-        other: Пользователи
       post:
         few: Поста
         many: Постов
@@ -21,7 +16,23 @@ ru:
         many: Комментариев
         one: Комментарий
         other: Комментарии
+      user:
+        few: Пользователя
+        many: Пользователей
+        one: Пользователь
+        other: Пользователи
     attributes:
+      post:
+        body: Тело
+        title: Название
+        user: Пользователь
+        post_category: Категория
+      post_category:
+        name: Названия
+      post/comment:
+        content: Содержание
+        user: Пользователь
+        post: Пост
       user:
         confirmation_sent_at: Дата отправки подтверждения
         confirmation_token: Токен подтверждения
@@ -46,17 +57,6 @@ ru:
         unconfirmed_email: Неподтвержденный email
         unlock_token: Токен разблокировки
         updated_at: Дата обновления
-      post:
-        body: Тело
-        title: Название
-        user: Пользователь
-        post_category: Категория
-      post_category:
-        name: Названия
-      post/comment:
-        content: Содержание
-        user: Пользователь
-        post: Пост
     errors:
       format: "%{attribute} %{message}"
       messages:

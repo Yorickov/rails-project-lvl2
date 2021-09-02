@@ -2,11 +2,11 @@ ru:
   layouts:
     shared:
       nav:
+        add_post: Добавить пост
         login: Войти
         logout: Выйти
-        sign_up: Регистрация
         posts: Посты
-        add_post: Добавить пост
+        sign_up: Регистрация
         switch_lang: Поменять язык на %{lang}
       footer:
         project: Yorickov. Хекслет Rails проект-2
@@ -16,13 +16,15 @@ ru:
       new:
         create_post: Создать пост
       show:
+        all_posts: Все посты
         comment: Комментарий
+
       comments:
         edit:
           edit_comment: Редактировать комментарий
         footer:
-          reply: Ответить
           auth_required: Требуетcя
+          reply: Ответить
       post:
         comments_count:
           one: "%{count} комментарий"

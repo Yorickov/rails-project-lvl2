@@ -1,5 +1,12 @@
-article
-  section.article-body.mb-3
+.row
+  section
+    ol.breadcrumb.bg-light.p-3
+      li.breadcrumb-item
+        = link_to t('.all_posts'), posts_path, class: 'text-decoration-none'
+      li.breadcrumb-item.active aria-current='page' = @post.post_category
+
+.row
+  section.mb-3
     h1 = @post.title
     p = @post.body
     hr
@@ -9,16 +16,15 @@ article
         span.fst-italic = time_ago(@post.created_at)
 
       .d-flex
-        = link_to t('links.back'), :back, class: 'btn btn-outline-primary'
         - if user_signed_in? && current_user.author_of?(@post)
           = link_to t('links.edit'), edit_post_path(@post), class: 'btn btn-outline-primary mx-3'
           = link_to t('links.delete'), post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-primary'
 
   - if user_signed_in?
-    section.article-form.mb-4
+    section.mb-4
       h6.mt-3 = t('.comment')
       = render 'web/posts/comments/form', comment: @post.comments.new, url: post_comments_path(@post)
 
   - if @post.comments.any?
-    section.article-comment.mb-4
+    section.mb-4
       = nested_comments(@post.comments.arrange(order: :created_at))

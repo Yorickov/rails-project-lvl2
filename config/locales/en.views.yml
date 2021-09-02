@@ -2,11 +2,11 @@ en:
   layouts:
     shared:
       nav:
+        add_post: Add post
         login: Log in
         logout: Log out
-        sign_up: Sign up
         posts: Posts
-        add_post: Add post
+        sign_up: Sign up
         switch_lang: Switch language to %{lang}
       footer:
         project: Yorickov. Hexlet Rails project-2
@@ -16,13 +16,15 @@ en:
       new:
         create_post: Create post
       show:
+        all_posts: All posts
         comment: Comment
+
       comments:
         edit:
           edit_comment: Edit comment
         footer:
-          reply: Reply
           auth_required: Requires
+          reply: Reply
       post:
         comments_count:
           one: "%{count} comment"

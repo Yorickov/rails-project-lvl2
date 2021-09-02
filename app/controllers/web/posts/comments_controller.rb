@@ -41,6 +41,6 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
   end
 
   def authorize_user!
-    redirect_to root_path, notice: t('.unauthorized_user') unless current_user.author_of?(@comment)
+    redirect_to root_path, notice: t('messages.unauthorized_user') unless current_user.author_of?(@comment)
   end
 end
