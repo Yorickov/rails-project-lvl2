@@ -24,3 +24,4 @@ ru:
     post_destroy: Пост удален
     post_created: Пост создан
     post_updated: Пост абновлен
+    unauthorized_user: У Вас нет прав это делать

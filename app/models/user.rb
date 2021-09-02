@@ -36,4 +36,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :post_comments, class_name: 'Post::Comment', dependent: :destroy
+
+  def author_of?(resource)
+    resource.user == self
+  end
 end

@@ -31,9 +31,16 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  test '#posts' do
+  setup do
     @user = users(:one)
+  end
 
+  test '#posts' do
     assert_equal 1, @user.posts.size
+  end
+
+  test '#author_of?' do
+    assert @user.author_of? posts(:two)
+    assert_not @user.author_of? posts(:one)
   end
 end

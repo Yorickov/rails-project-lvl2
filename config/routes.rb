@@ -26,7 +26,11 @@
 #                         posts GET    /posts(.:format)                                        web/posts#index
 #                               POST   /posts(.:format)                                        web/posts#create
 #                      new_post GET    /posts/new(.:format)                                    web/posts#new
+#                     edit_post GET    /posts/:id/edit(.:format)                               web/posts#edit
 #                          post GET    /posts/:id(.:format)                                    web/posts#show
+#                               PATCH  /posts/:id(.:format)                                    web/posts#update
+#                               PUT    /posts/:id(.:format)                                    web/posts#update
+#                               DELETE /posts/:id(.:format)                                    web/posts#destroy
 # rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format) action_mailbox/ingresses/postmark/inbound_emails#create
 
 Rails.application.routes.draw do

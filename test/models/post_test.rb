@@ -25,9 +25,7 @@
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
-  self.use_transactional_tests = true
-
-  def setup
+  setup do
     @post = posts(:one)
     @presence_message = "can't be blank"
     @length_message = 'is too short (minimum is 50 characters)'

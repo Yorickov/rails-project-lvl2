@@ -3,6 +3,7 @@
 class Web::PostsController < Web::ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :load_post, only: %i[show edit update destroy]
+  before_action :authorize_user!, only: %i[edit update destroy]
 
   def index
     @posts = Post.includes(:user).order(created_at: :desc)
@@ -49,5 +50,9 @@ class Web::PostsController < Web::ApplicationController
 
   def load_post
     @post = Post.find(params[:id])
+  end
+
+  def authorize_user!
+    redirect_to root_path, notice: t('.unauthorized_user') unless current_user.author_of?(@post)
   end
 end

@@ -12,9 +12,7 @@
 require 'test_helper'
 
 class PostCategoryTest < ActiveSupport::TestCase
-  self.use_transactional_tests = true
-
-  def setup
+  setup do
     @post_category = post_categories(:sport)
     @presence_message = "can't be blank"
   end

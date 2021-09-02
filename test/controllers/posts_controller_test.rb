@@ -13,9 +13,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @another_post = posts(:two)
   end
 
-  teardown do
-    Rails.cache.clear
-  end
+  # teardown do
+  #   Rails.cache.clear
+  # end
 
   test '#index' do
     get posts_url
@@ -70,12 +70,20 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_url
   end
 
-  test '#edit as User' do
-    sign_in users(:one)
+  test '#edit as authorized User' do
+    sign_in users(:two)
 
     get edit_post_url(@post)
 
     assert_response :success
+  end
+
+  test '#edit as unauthorized User' do
+    sign_in users(:one)
+
+    get edit_post_url(@post)
+
+    assert_redirected_to root_path
   end
 
   test '#edit as Guest' do
@@ -84,8 +92,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_url
   end
 
-  test '#update as User success' do
-    sign_in users(:one)
+  test '#update as authorized User success' do
+    sign_in users(:two)
 
     patch post_url(@post), params: { post: { **@post_params, body: @another_post.body } }
     assert_redirected_to @post
@@ -95,12 +103,22 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#update as User failed' do
-    sign_in users(:one)
+    sign_in users(:two)
     @post_params[:body] = nil
 
     patch post_url(@post), params: { post: @post_params }
 
     assert_response :unprocessable_entity
+  end
+
+  test '#update as unauthorized User' do
+    sign_in users(:one)
+
+    patch post_url(@post), params: { post: { **@post_params, body: @another_post.body } }
+    assert_redirected_to root_path
+
+    @post.reload
+    assert_not_equal @another_post.body, @post.body
   end
 
   test '#update as Guest' do
@@ -109,13 +127,22 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_url
   end
 
-  test '#destroy as User success' do
-    sign_in users(:one)
+  test '#destroy as authorized User' do
+    sign_in users(:two)
 
     assert_difference('Post.count', -1) do
       delete post_url(@post)
     end
     assert_redirected_to posts_url
+  end
+
+  test '#destroy as unauthorized User' do
+    sign_in users(:one)
+
+    assert_no_difference('Post.count') do
+      delete post_url(@post)
+    end
+    assert_redirected_to root_path
   end
 
   test '#destroy as Guest' do

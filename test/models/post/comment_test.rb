@@ -26,9 +26,7 @@
 require 'test_helper'
 
 class Post::CommentTest < ActiveSupport::TestCase
-  self.use_transactional_tests = true
-
-  def setup
+  setup do
     @post_comment = Post::Comment.new(
       content: Faker::Lorem.paragraph_by_chars(number: 10),
       user: users(:two),

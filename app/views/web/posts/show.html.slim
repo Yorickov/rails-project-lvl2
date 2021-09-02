@@ -8,10 +8,9 @@ article
         span.fst-italic.me-3 = @post.user.email
         span.fst-italic = time_ago(@post.created_at)
 
-      / TODO: add authorization
-      - if user_signed_in?
-        .d-flex
-          = link_to t('links.back'), :back, class: 'btn btn-outline-primary'
+      .d-flex
+        = link_to t('links.back'), :back, class: 'btn btn-outline-primary'
+        - if user_signed_in? && current_user.author_of?(@post)
           = link_to t('links.edit'), edit_post_path(@post), class: 'btn btn-outline-primary mx-3'
           = link_to t('links.delete'), post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-primary'
 
