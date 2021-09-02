@@ -28,6 +28,6 @@ one:
   post: one
 
 two:
-  content: '<%= Faker::Lorem.paragraph_by_chars(number: 200) %>'
+  content: '<%= Faker::Lorem.paragraph_by_chars(number: 100) %>'
   user: one
   post: two

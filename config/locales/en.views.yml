@@ -18,6 +18,8 @@ en:
       show:
         comment: Comment
       comments:
+        edit:
+          edit_comment: Edit comment
         footer:
           reply: Reply
           auth_required: Requires

@@ -20,8 +20,10 @@ en:
     show: Show
 
   messages:
+    comment_created: Comment created
+    comment_updated: Comment updated
     empty_comment: Comment can't be blank
-    post_destroy: Post destroyed
+    post_destroyed: Post destroyed
     post_created: Post created
     post_updated: Post updated
     unauthorized_user: You're no authorized to do this

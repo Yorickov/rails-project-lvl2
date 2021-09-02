@@ -39,7 +39,7 @@ class Web::PostsController < Web::ApplicationController
   def destroy
     @post.destroy
 
-    redirect_to posts_url, notice: t('messages.post_destroy')
+    redirect_to posts_url, notice: t('messages.post_destroyed')
   end
 
   private

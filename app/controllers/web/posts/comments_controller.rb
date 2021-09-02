@@ -2,15 +2,27 @@
 
 class Web::Posts::CommentsController < Web::Posts::ApplicationController
   before_action :authenticate_user!
-  before_action :load_post, only: :create
+  before_action :load_post
+  before_action :load_comment, only: %i[edit update]
+  before_action :authorize_user!, only: %i[edit update]
 
   def create
     @comment = @post.comments.new(post_comment_params.merge(user: current_user))
     if @comment.save
-      redirect_to @post
+      redirect_to @post, notice: t('messages.comment_created')
     else
       flash.now[:notice] = t('messages.empty_comment')
       render 'web/posts/show', status: :unprocessable_entity
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @comment.update(post_comment_params)
+      redirect_to @post, notice: t('messages.comment_updated')
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -22,5 +34,13 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
 
   def load_post
     @post = Post.find(params[:post_id])
+  end
+
+  def load_comment
+    @comment = Post::Comment.find(params[:id])
+  end
+
+  def authorize_user!
+    redirect_to root_path, notice: t('.unauthorized_user') unless current_user.author_of?(@comment)
   end
 end

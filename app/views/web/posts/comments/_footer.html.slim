@@ -1,11 +1,12 @@
-a.small.text-decoration-none.text-muted.text-secondary(
-	href="#new_post_comment-#{comment.id}"
-  data-bs-toggle="collapse" role="button"
-  aria-expanded="false" aria-controls="#new_post_comment-#{comment.id}"
-) = t('.reply')
+a.small.text-decoration-none.text-muted.text-secondary(href="#new_post_comment-#{comment.id}" data-bs-toggle="collapse" role="button"
+                                                       aria-expanded="false" aria-controls="#new_post_comment-#{comment.id}")
+  = t('.reply')
 .collapse(id="new_post_comment-#{comment.id}")
   - if user_signed_in?
       = render 'web/posts/comments/form', comment: comment.post.comments.new, url: post_comments_path(comment.post), parent_id: comment.id
   - else
       span = t('.auth_required')
       = link_to t('.login'), new_user_session_path, class: 'card-link ms-2 text-decoration-none'
+
+- if user_signed_in? && current_user.author_of?(comment)
+  = link_to t('links.edit'), edit_post_comment_path(comment.post, comment), class: 'small text-decoration-none text-muted text-secondary mx-2'

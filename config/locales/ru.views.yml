@@ -18,6 +18,8 @@ ru:
       show:
         comment: Комментарий
       comments:
+        edit:
+          edit_comment: Редактировать комментарий
         footer:
           reply: Ответить
           auth_required: Требуетcя
