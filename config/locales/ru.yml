@@ -22,6 +22,7 @@ ru:
   messages:
     comment_created: Комментарий создан
     comment_updated: Комментарий обновлен
+    double_like: Вы уже лайкнули этот пост
     empty_comment: Комментарий не может быть пустым
     post_destroyed: Пост удален
     post_created: Пост создан

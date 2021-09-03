@@ -19,6 +19,13 @@
         - if user_signed_in? && current_user.author_of?(@post)
           = link_to t('links.edit'), edit_post_path(@post), class: 'btn btn-outline-primary mx-3'
           = link_to t('links.delete'), post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-primary'
+        span.me-2 = @post.likes.size
+        - if @current_user_like
+          = link_to post_like_path(@post, @current_user_like), method: :delete do
+            i.fas.fa-thumbs-up
+        - else
+          = link_to post_likes_path(@post), method: :post do
+            i.fas.fa-thumbs-up
 
   - if user_signed_in?
     section.mb-4

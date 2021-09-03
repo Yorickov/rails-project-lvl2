@@ -41,7 +41,8 @@ Rails.application.routes.draw do
 
     resources :posts do
       scope module: :posts do
-        resources :comments, only: %i[create edit update destroy]
+        resources :comments, only: %i[create edit update]
+        resources :likes, only: %i[create destroy]
       end
     end
   end

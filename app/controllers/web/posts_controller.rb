@@ -11,6 +11,7 @@ class Web::PostsController < Web::ApplicationController
 
   def show
     @comment = @post.comments.new
+    @current_user_like = @post.likes.find_by(user: current_user)
   end
 
   def new
