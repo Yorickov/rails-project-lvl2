@@ -25,46 +25,16 @@
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
-  setup do
-    @post = posts(:one)
-    @presence_message = "can't be blank"
-    @length_message = 'is too short (minimum is 50 characters)'
+  context 'associations' do
+    should belong_to(:user)
+    should belong_to(:post_category).class_name('PostCategory')
+    should have_many(:comments).dependent(:destroy)
+    should have_many(:likes).dependent(:destroy)
   end
 
-  test 'valid' do
-    assert @post.valid?
-  end
-
-  test 'invalid without title' do
-    @post.title = nil
-
-    assert_not @post.valid?
-    assert_equal [@presence_message], @post.errors[:title]
-  end
-
-  test 'invalid without body' do
-    @post.body = nil
-
-    assert_not @post.valid?
-    assert_equal [@presence_message, @length_message], @post.errors[:body]
-  end
-
-  test 'invalid with body less than 50 chars' do
-    @post.body = Faker::Lorem.paragraph_by_chars(number: 49)
-
-    assert_not @post.valid?
-    assert_equal [@length_message], @post.errors[:body]
-  end
-
-  test '#post_category' do
-    assert_equal 'sport', @post.post_category.name
-  end
-
-  test '#user' do
-    assert_equal 'two@email.com', @post.user.email
-  end
-
-  test '#post_comments' do
-    assert_equal 1, @post.comments.size
+  context 'validations' do
+    should validate_presence_of(:title)
+    should validate_presence_of(:body)
+    should validate_length_of(:body).is_at_least(50)
   end
 end

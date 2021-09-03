@@ -12,23 +12,11 @@
 require 'test_helper'
 
 class PostCategoryTest < ActiveSupport::TestCase
-  setup do
-    @post_category = post_categories(:sport)
-    @presence_message = "can't be blank"
+  context 'associations' do
+    should have_many(:posts).dependent(:destroy)
   end
 
-  test 'valid' do
-    assert @post_category.valid?
-  end
-
-  test 'invalid without name' do
-    @post_category.name = nil
-
-    assert_not @post_category.valid?
-    assert_equal [@presence_message], @post_category.errors[:name]
-  end
-
-  test '#posts' do
-    assert_equal 1, @post_category.posts.size
+  context 'validations' do
+    should validate_presence_of(:name)
   end
 end

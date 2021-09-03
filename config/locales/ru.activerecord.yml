@@ -2,10 +2,10 @@ ru:
   activerecord:
     models:
       post:
-        few: Поста
-        many: Постов
-        one: Пост
-        other: Посты
+        few: Статьи
+        many: Статей
+        one: Статья
+        other: Статьи
       post_category:
         few: Категории
         many: Категорий
@@ -32,7 +32,7 @@ ru:
       post/comment:
         content: Содержание
         user: Пользователь
-        post: Пост
+        post: Статья
       user:
         confirmation_sent_at: Дата отправки подтверждения
         confirmation_token: Токен подтверждения

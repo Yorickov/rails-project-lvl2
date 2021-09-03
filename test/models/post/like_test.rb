@@ -24,21 +24,12 @@
 require 'test_helper'
 
 class Post::LikeTest < ActiveSupport::TestCase
-  setup do
-    @like = post_likes(:one)
+  context 'associations' do
+    should belong_to(:user)
+    should belong_to(:post)
   end
 
-  test '#post' do
-    assert_equal 'one', @like.post.title
-  end
-
-  test '#user' do
-    assert_equal 'one@email.com', @like.user.email
-  end
-
-  test '#uniqueness' do
-    like = Post::Like.new(post: posts(:one), user: users(:one))
-    assert_not like.valid?
-    assert_equal ['has already been taken'], like.errors[:post]
+  context 'validations' do
+    should validate_uniqueness_of(:post).scoped_to(:user_id)
   end
 end

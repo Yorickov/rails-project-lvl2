@@ -35,8 +35,9 @@ class UserTest < ActiveSupport::TestCase
     @user = users(:one)
   end
 
-  test '#posts' do
-    assert_equal 1, @user.posts.size
+  context 'associations' do
+    should have_many(:posts).dependent(:destroy)
+    should have_many(:post_comments).dependent(:destroy).class_name('Post::Comment')
   end
 
   test '#author_of?' do

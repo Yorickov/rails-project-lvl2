@@ -2,10 +2,10 @@ ru:
   layouts:
     shared:
       nav:
-        add_post: Добавить пост
+        add_post: Добавить статью
         login: Войти
         logout: Выйти
-        posts: Посты
+        posts: Статьи
         sign_up: Регистрация
         switch_lang: Поменять язык на %{lang}
       footer:
@@ -14,9 +14,9 @@ ru:
   web:
     posts:
       new:
-        create_post: Создать пост
+        create_post: Создать статью
       show:
-        all_posts: Все посты
+        all_posts: Все статьи
         comment: Комментарий
 
       comments:

@@ -26,39 +26,13 @@
 require 'test_helper'
 
 class Post::CommentTest < ActiveSupport::TestCase
-  setup do
-    @post_comment = Post::Comment.new(
-      content: Faker::Lorem.paragraph_by_chars(number: 10),
-      user: users(:two),
-      post: posts(:one)
-    )
-    @presence_message = "can't be blank"
-    @length_message = 'is too long (maximum is 100 characters)'
+  context 'associations' do
+    should belong_to(:user)
+    should belong_to(:post)
   end
 
-  test 'valid' do
-    assert @post_comment.valid?
-  end
-
-  test 'invalid without content' do
-    @post_comment.content = nil
-
-    assert_not @post_comment.valid?
-    assert_equal [@presence_message], @post_comment.errors[:content]
-  end
-
-  test 'invalid with too long content' do
-    @post_comment.content = Faker::Lorem.paragraph_by_chars(number: 101)
-
-    assert_not @post_comment.valid?
-    assert_equal [@length_message], @post_comment.errors[:content]
-  end
-
-  test '#post' do
-    assert_equal 'one', @post_comment.post.title
-  end
-
-  test '#user' do
-    assert_equal 'two@email.com', @post_comment.user.email
+  context 'validations' do
+    should validate_presence_of(:content)
+    should validate_length_of(:content).is_at_most(100)
   end
 end
