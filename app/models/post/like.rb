@@ -22,7 +22,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post::Like < ApplicationRecord
-  belongs_to :post
+  belongs_to :post, counter_cache: true
   belongs_to :user
 
   validates :post, uniqueness: { scope: :user_id }

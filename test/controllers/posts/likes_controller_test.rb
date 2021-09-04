@@ -15,12 +15,12 @@ class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
 
     assert_difference('Post::Like.count') do
-      post post_likes_url(@post2, @like2)
+      post post_likes_url(@post2)
     end
     assert_redirected_to @post2
 
     assert_no_difference('Post::Like.count') do
-      post post_likes_url(@post2, @like2)
+      post post_likes_url(@post2)
     end
     assert_redirected_to @post2
   end

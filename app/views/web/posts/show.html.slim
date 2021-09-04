@@ -1,31 +1,32 @@
 .row
-  section
-    ol.breadcrumb.bg-light.p-3
-      li.breadcrumb-item
-        = link_to t('.all_posts'), posts_path, class: 'text-decoration-none'
-      li.breadcrumb-item.active aria-current='page' = @post.post_category
+  ol.breadcrumb.bg-light.p-3
+    li.breadcrumb-item
+      = link_to t('.all_posts'), posts_path, class: 'text-decoration-none'
+    li.breadcrumb-item.active aria-current='page' = @post.post_category
 
 .row
-  section.mb-3
-    h1 = @post.title
+  h1 = @post.title
+  section.mb-2
     p = @post.body
     hr
     .d-flex
-      .d-flex.aling-items-center.me-auto
+      .me-auto
         span.fst-italic.me-3 = @post.user.email
         span.fst-italic = time_ago(@post.created_at)
 
-      .d-flex
-        - if user_signed_in? && current_user.author_of?(@post)
-          = link_to t('links.edit'), edit_post_path(@post), class: 'btn btn-outline-primary mx-3'
-          = link_to t('links.delete'), post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-primary'
-        span.me-2 = @post.likes.size
+      div
+        span.mx-2 = @post.likes.size
         - if @current_user_like
           = link_to post_like_path(@post, @current_user_like), method: :delete do
             i.fas.fa-thumbs-up
         - else
           = link_to post_likes_path(@post), method: :post do
             i.fas.fa-thumbs-up
+
+    - if user_signed_in? && current_user.author_of?(@post)
+      .mt-3
+        = link_to t('links.edit'), edit_post_path(@post), class: 'btn btn-sm btn-outline-primary me-2'
+        = link_to t('links.delete'), @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-primary'
 
   - if user_signed_in?
     section.mb-4
