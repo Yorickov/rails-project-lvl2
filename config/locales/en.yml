@@ -8,9 +8,9 @@ en:
     select:
       prompt: 'Please select: '
     submit:
-      create: Create %{model}
-      submit: Save %{model}
-      update: Update %{model}
+      create: Send
+      submit: Save
+      update: Send changes
 
   links:
     back: Back

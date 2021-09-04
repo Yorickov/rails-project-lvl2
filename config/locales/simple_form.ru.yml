@@ -10,6 +10,12 @@ ru:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: 'Пожалуйста, рассмотрите проблемы ниже:'
+
+    placeholders:
+      post:
+        title: Введите название статьи
+        body: Введите содержание статьи
+
     # Examples
     # labels:
     #   defaults:

@@ -8,9 +8,9 @@ ru:
     select:
       prompt: 'Выберите: '
     submit:
-      create: Создать %{model}
-      submit: Сохранить %{model}
-      update: Сохранить %{model}
+      create: Отправить
+      submit: Сохранить
+      update: Отправить изменения
 
   links:
     back: Назад

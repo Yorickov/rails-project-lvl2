@@ -10,6 +10,12 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: 'Please review the problems below:'
+
+    placeholders:
+      post:
+        title: Input post title
+        body: Input post content
+
     # Examples
     # labels:
     #   defaults:
@@ -26,6 +32,3 @@ en:
     # include_blanks:
     #   defaults:
     #     age: 'Rather not say'
-    # prompts:
-    #   defaults:
-    #     age: 'Select your age'
