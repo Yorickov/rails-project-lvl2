@@ -4,14 +4,14 @@
 #
 # Table name: posts
 #
-#  id               :bigint           not null, primary key
+#  id               :integer          not null, primary key
 #  body             :text             not null
 #  likes_count      :integer
 #  title            :string           not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  post_category_id :bigint           not null
-#  user_id          :bigint           not null
+#  post_category_id :integer          not null
+#  user_id          :integer          not null
 #
 # Indexes
 #
@@ -20,8 +20,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (post_category_id => post_categories.id)
-#  fk_rails_...  (user_id => users.id)
+#  post_category_id  (post_category_id => post_categories.id)
+#  user_id           (user_id => users.id)
 #
 class Post < ApplicationRecord
   belongs_to :user

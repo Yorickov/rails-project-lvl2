@@ -10,21 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        ports: ["5432:5432"]
-        options:
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Setup SQLite
+        run: |
+          sudo apt-get install libsqlite3-dev
 
       - name: Setup ruby and install gems
         uses: ruby/setup-ruby@v1
@@ -48,7 +40,7 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          PGHOST: localhost
         run: |
-          bin/rails db:prepare
+          bin/rails db:create
+          bin/rails db:migrate
           make test
