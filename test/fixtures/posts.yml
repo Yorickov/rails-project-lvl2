@@ -42,3 +42,10 @@ three:
   user: two
   post_category: science
   likes_count: nil
+
+four:
+  title: $LABEL
+  body: '<%= Faker::Lorem.paragraph_by_chars(number: 400) %>'
+  user: admin
+  post_category: travel
+  likes_count: nil

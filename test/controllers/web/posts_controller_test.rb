@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class PostsControllerTest < ActionDispatch::IntegrationTest
+class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post = posts(:one)
     @post_params = {
@@ -16,12 +16,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   # teardown do
   #   Rails.cache.clear
   # end
-
-  test '#index' do
-    get posts_url
-
-    assert_response :success
-  end
 
   test '#show' do
     get post_url(@post)
@@ -40,7 +34,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test '#new as Guest' do
     get new_post_url
 
-    assert_redirected_to new_user_session_url
+    assert_redirected_to new_user_session_path
   end
 
   test '#create as User success' do
@@ -67,7 +61,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Post.count') do
       post posts_url, params: { post: @post_params }
     end
-    assert_redirected_to new_user_session_url
+    assert_redirected_to new_user_session_path
   end
 
   test '#edit as authorized User' do
@@ -89,7 +83,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test '#edit as Guest' do
     get edit_post_url(@post)
 
-    assert_redirected_to new_user_session_url
+    assert_redirected_to new_user_session_path
   end
 
   test '#update as authorized User success' do
@@ -124,7 +118,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test '#update as Guest' do
     patch post_url(@post), params: { post: @post_params }
 
-    assert_redirected_to new_user_session_url
+    assert_redirected_to new_user_session_path
   end
 
   test '#destroy as authorized User' do
@@ -133,7 +127,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Post.count', -1) do
       delete post_url(@post)
     end
-    assert_redirected_to posts_url
+    assert_redirected_to root_path
   end
 
   test '#destroy as unauthorized User' do
@@ -149,6 +143,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Post.count') do
       delete post_url(@post)
     end
-    assert_redirected_to new_user_session_url
+    assert_redirected_to new_user_session_path
   end
 end

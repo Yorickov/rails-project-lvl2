@@ -82,3 +82,6 @@ gem 'flash_rails_messages'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 
 gem 'ancestry'
+
+gem 'bootstrap5-kaminari-views'
+gem 'kaminari'

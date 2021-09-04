@@ -42,9 +42,9 @@ Rails.application.routes.draw do
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
 
   scope module: :web do
-    root 'landing#index'
+    root 'home#index'
 
-    resources :posts do
+    resources :posts, except: :index do
       scope module: :posts do
         resources :comments, only: %i[create edit update]
         resources :likes, only: %i[create destroy]

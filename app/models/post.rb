@@ -32,6 +32,8 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 50 }
 
+  paginates_per 3
+
   def to_s
     title
   end

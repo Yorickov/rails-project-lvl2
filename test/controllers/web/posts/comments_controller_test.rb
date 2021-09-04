@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
+class Web::Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post_comment = post_comments(:one)
     @post = posts(:one)
@@ -37,7 +37,7 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
       post post_comments_url(@post_comment.post), params: { post_comment: @post_comment_params }
     end
 
-    assert_redirected_to new_user_session_url
+    assert_redirected_to new_user_session_path
   end
 
   test '#edit as authorized User' do

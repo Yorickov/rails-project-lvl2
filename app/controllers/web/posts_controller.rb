@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
 class Web::PostsController < Web::ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[show]
   before_action :load_post, only: %i[show edit update destroy]
   before_action :authorize_user!, only: %i[edit update destroy]
-
-  def index
-    @posts = Post.includes(:user).order(created_at: :desc)
-  end
 
   def show
     @comment = @post.comments.new
@@ -40,7 +36,7 @@ class Web::PostsController < Web::ApplicationController
   def destroy
     @post.destroy
 
-    redirect_to posts_url, notice: t('messages.post_destroyed')
+    redirect_to root_path, notice: t('messages.post_destroyed')
   end
 
   private

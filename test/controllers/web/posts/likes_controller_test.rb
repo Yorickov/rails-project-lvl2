@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
+class Web::Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @post1 = posts(:one)
@@ -28,7 +28,7 @@ class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   test '#create as Guest' do
     post post_likes_url(@post2)
 
-    assert_redirected_to new_user_session_url
+    assert_redirected_to new_user_session_path
   end
 
   test '#destroy as User' do
@@ -43,6 +43,6 @@ class Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   test '#destroy as Guest' do
     delete post_like_url(@post1, @like1)
 
-    assert_redirected_to new_user_session_url
+    assert_redirected_to new_user_session_path
   end
 end
