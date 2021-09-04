@@ -93,7 +93,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to @post
 
     @post.reload
-    assert_equal @another_post.body, @post.body
+    assert { @another_post.body == @post.body }
   end
 
   test '#update as User failed' do
@@ -112,7 +112,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
 
     @post.reload
-    assert_not_equal @another_post.body, @post.body
+    assert { @another_post.body != @post.body }
   end
 
   test '#update as Guest' do

@@ -1,7 +1,7 @@
 .row
   ol.breadcrumb.bg-light.p-3
     li.breadcrumb-item
-      = link_to t('.all_posts'), posts_path, class: 'text-decoration-none'
+      = link_to t('.all_posts'), root_path, class: 'text-decoration-none'
     li.breadcrumb-item.active aria-current='page' = @post.post_category
 
 .row

@@ -13,6 +13,8 @@ en:
 
   web:
     posts:
+      edit:
+        edit_post: Edit post
       new:
         create_post: Create post
       show:
@@ -25,7 +27,9 @@ en:
         footer:
           auth_required: Requires
           reply: Reply
+
       post:
         comments_count:
           one: "%{count} comment"
           other: "%{count} comments"
+        likable: "Liked: %{likes_count}"

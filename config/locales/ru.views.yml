@@ -13,6 +13,8 @@ ru:
 
   web:
     posts:
+      edit:
+        edit_post: Редактировать статью
       new:
         create_post: Создать статью
       show:
@@ -25,9 +27,11 @@ ru:
         footer:
           auth_required: Требуетcя
           reply: Ответить
+
       post:
         comments_count:
           one: "%{count} комментарий"
           few: "%{count} комментария"
           many: "%{count} комментариев"
           other: "%{count} комментария"
+        likable: "Понравилось: %{likes_count}"

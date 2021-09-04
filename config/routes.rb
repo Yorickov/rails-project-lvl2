@@ -21,15 +21,14 @@
 #         new_user_confirmation GET    /users/confirmation/new(.:format)                       devise/confirmations#new
 #             user_confirmation GET    /users/confirmation(.:format)                           devise/confirmations#show
 #                               POST   /users/confirmation(.:format)                           devise/confirmations#create
-#                          root GET    /                                                       web/landing#index
+#                          root GET    /                                                       web/home#index
 #                 post_comments POST   /posts/:post_id/comments(.:format)                      web/posts/comments#create
 #             edit_post_comment GET    /posts/:post_id/comments/:id/edit(.:format)             web/posts/comments#edit
 #                  post_comment PATCH  /posts/:post_id/comments/:id(.:format)                  web/posts/comments#update
 #                               PUT    /posts/:post_id/comments/:id(.:format)                  web/posts/comments#update
 #                    post_likes POST   /posts/:post_id/likes(.:format)                         web/posts/likes#create
 #                     post_like DELETE /posts/:post_id/likes/:id(.:format)                     web/posts/likes#destroy
-#                         posts GET    /posts(.:format)                                        web/posts#index
-#                               POST   /posts(.:format)                                        web/posts#create
+#                         posts POST   /posts(.:format)                                        web/posts#create
 #                      new_post GET    /posts/new(.:format)                                    web/posts#new
 #                     edit_post GET    /posts/:id/edit(.:format)                               web/posts#edit
 #                          post GET    /posts/:id(.:format)                                    web/posts#show

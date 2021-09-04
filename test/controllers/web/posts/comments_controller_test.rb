@@ -69,7 +69,7 @@ class Web::Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to @post
 
     @post_comment.reload
-    assert_equal @another_post_comment.content, @post_comment.content
+    assert { @another_post_comment.content == @post_comment.content }
   end
 
   test '#update as User failed' do
@@ -88,7 +88,7 @@ class Web::Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
 
     @post_comment.reload
-    assert_not_equal @another_post_comment.content, @post_comment.content
+    assert { @another_post_comment.content != @post_comment.content }
   end
 
   test '#update as Guest' do
