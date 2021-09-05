@@ -4,7 +4,8 @@ require 'test_helper'
 
 class Web::Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    register_user_and_another_user
+
     @post1 = posts(:one)
     @post2 = posts(:two)
     @like1 = post_likes(:one)
@@ -14,12 +15,12 @@ class Web::Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   test '#create no more than one like as User' do
     sign_in @user
 
-    assert_difference('Post::Like.count') do
+    assert_difference('PostLike.count') do
       post post_likes_url(@post2)
     end
     assert_redirected_to @post2
 
-    assert_no_difference('Post::Like.count') do
+    assert_no_difference('PostLike.count') do
       post post_likes_url(@post2)
     end
     assert_redirected_to @post2
@@ -34,7 +35,7 @@ class Web::Posts::LikesControllerTest < ActionDispatch::IntegrationTest
   test '#destroy as User' do
     sign_in @user
 
-    assert_difference('Post::Like.count', -1) do
+    assert_difference('PostLike.count', -1) do
       delete post_like_url(@post1, @like1)
     end
     assert_redirected_to @post1

@@ -2,11 +2,9 @@
 
 # == Schema Information
 #
-# Table name: post_comments
+# Table name: post_likes
 #
 #  id         :integer          not null, primary key
-#  ancestry   :string
-#  content    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  post_id    :integer          not null
@@ -14,9 +12,9 @@
 #
 # Indexes
 #
-#  index_post_comments_on_ancestry  (ancestry)
-#  index_post_comments_on_post_id   (post_id)
-#  index_post_comments_on_user_id   (user_id)
+#  index_post_likes_on_post_id              (post_id)
+#  index_post_likes_on_post_id_and_user_id  (post_id,user_id) UNIQUE
+#  index_post_likes_on_user_id              (user_id)
 #
 # Foreign Keys
 #
@@ -25,14 +23,13 @@
 #
 require 'test_helper'
 
-class Post::CommentTest < ActiveSupport::TestCase
+class PostLikeTest < ActiveSupport::TestCase
   context 'associations' do
     should belong_to(:user)
-    should belong_to(:post)
+    should belong_to(:post).inverse_of(:likes)
   end
 
   context 'validations' do
-    should validate_presence_of(:content)
-    should validate_length_of(:content).is_at_most(100)
+    should validate_uniqueness_of(:post).scoped_to(:user_id)
   end
 end

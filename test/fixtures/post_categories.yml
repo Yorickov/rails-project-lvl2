@@ -7,15 +7,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+one:
+  name: js
 
-travel:
-  name: $LABEL
-
-science:
-  name: $LABEL
-
-sport:
-  name: $LABEL
-
-humor:
-  name: $LABEL
+two:
+  name: ruby

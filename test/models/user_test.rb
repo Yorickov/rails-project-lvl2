@@ -37,11 +37,11 @@ class UserTest < ActiveSupport::TestCase
 
   context 'associations' do
     should have_many(:posts).inverse_of(:creator).dependent(:destroy)
-    should have_many(:post_comments).class_name('Post::Comment').inverse_of(:user).dependent(:destroy)
+    should have_many(:post_comments).class_name('PostComment').inverse_of(:user).dependent(:destroy)
   end
 
   test '#author_of?' do
-    assert @user.author_of? posts(:two)
-    assert_not @user.author_of? posts(:one)
+    assert @user.author_of? posts(:one)
+    assert_not @user.author_of? posts(:two)
   end
 end

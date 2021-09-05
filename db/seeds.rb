@@ -31,17 +31,15 @@ Post.create!(
     { creator: User.first,
       title: Faker::Lorem.sentence,
       body: Faker::Lorem.paragraph_by_chars(number: 400),
-      post_category: PostCategory.first,
-      likes_count: nil },
+      post_category: PostCategory.first },
     { creator: User.second,
       title: Faker::Lorem.sentence,
       body: Faker::Lorem.paragraph_by_chars(number: 300),
-      post_category: PostCategory.second,
-      likes_count: 1 }
+      post_category: PostCategory.second }
   ]
 )
 
-Post::Like.create!(
+PostLike.create!(
   [
     { user: User.first,
       post: Post.second }

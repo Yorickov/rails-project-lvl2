@@ -4,95 +4,101 @@ require 'test_helper'
 
 class Web::Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @post_comment = post_comments(:one)
+    register_user_and_another_user
+
     @post = posts(:one)
-    @post_comment_params = { content: @post_comment.content }
-    @another_post_comment = post_comments(:two)
+    @comment_params = { content: Faker::Lorem.paragraph_by_chars(number: 50) }
+    @another_comment_params = { content: Faker::Lorem.paragraph_by_chars(number: 50) }
+
+    @comment = PostComment.create!(@comment_params.merge(user: @user, post: @post))
+  end
+
+  teardown do
+    Rails.cache.clear
   end
 
   test '#create as User success' do
-    sign_in users(:one)
+    sign_in @user
 
-    assert_difference('Post::Comment.count') do
-      post post_comments_url(@post_comment.post), params: { post_comment: @post_comment_params }
+    assert_difference('PostComment.count') do
+      post post_comments_url(@post), params: { post_comment: @comment_params }
     end
 
-    assert_redirected_to @post_comment.post
+    assert_redirected_to @post
   end
 
   test '#create as User failed' do
-    sign_in users(:one)
+    sign_in @user
 
-    @post_comment_params = { content: nil }
-
-    assert_no_difference('Post::Comment.count') do
-      post post_comments_url(@post_comment.post), params: { post_comment: @post_comment_params }
+    assert_no_difference('PostComment.count') do
+      post post_comments_url(@post), params: { post_comment: { content: nil } }
     end
 
     assert_response :unprocessable_entity
   end
 
   test '#create as Guest' do
-    assert_no_difference('Post::Comment.count') do
-      post post_comments_url(@post_comment.post), params: { post_comment: @post_comment_params }
+    assert_no_difference('PostComment.count') do
+      post post_comments_url(@post), params: { post_comment: @comment_params }
     end
 
     assert_redirected_to new_user_session_path
   end
 
   test '#edit as authorized User' do
-    sign_in users(:two)
+    sign_in @user
 
-    get edit_post_comment_url(@post, @post_comment)
+    get edit_post_comment_url(@post, @comment)
 
     assert_response :success
   end
 
   test '#edit as unauthorized User' do
-    sign_in users(:one)
+    sign_in @another_user
 
-    get edit_post_comment_url(@post, @post_comment)
+    get edit_post_comment_url(@post, @comment)
 
     assert_redirected_to root_path
   end
 
   test '#edit as Guest' do
-    get edit_post_comment_url(@post, @post_comment)
+    get edit_post_comment_url(@post, @comment)
 
     assert_redirected_to new_user_session_url
   end
 
   test '#update as authorized User success' do
-    sign_in users(:two)
-    patch post_comment_url(@post, @post_comment), params: { post_comment: { content: @another_post_comment.content } }
+    sign_in @user
+
+    patch post_comment_url(@post, @comment), params: { post_comment: @another_comment_params }
 
     assert_redirected_to @post
 
-    @post_comment.reload
-    assert { @another_post_comment.content == @post_comment.content }
+    @comment.reload
+    assert { @another_comment_params[:content] == @comment.content }
   end
 
   test '#update as User failed' do
-    sign_in users(:two)
-    @post_comment_params[:content] = nil
+    sign_in @user
 
-    patch post_comment_url(@post, @post_comment), params: { post_comment: @post_comment_params }
+    patch post_comment_url(@post, PostComment.first), params: { post_comment: { content: nil } }
 
     assert_response :unprocessable_entity
   end
 
   test '#update as unauthorized User' do
-    sign_in users(:one)
+    sign_in @another_user
 
-    patch post_comment_url(@post, @post_comment), params: { post_comment: { content: @another_post_comment.content } }
+    patch post_comment_url(@post, @comment), params: { post_comment: @another_post_comment_params }
+
     assert_redirected_to root_path
 
-    @post_comment.reload
-    assert { @another_post_comment.content != @post_comment.content }
+    @comment.reload
+    assert { @another_comment_params[:content] != @comment.content }
   end
 
   test '#update as Guest' do
-    patch post_comment_url(@post, @post_comment), params: { post_comment: @post_comment_params }
+    patch post_comment_url(@post, @comment), params: { post_comment: @post_comment_params }
 
     assert_redirected_to new_user_session_url
   end

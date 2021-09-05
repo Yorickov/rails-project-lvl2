@@ -4,6 +4,8 @@ require 'test_helper'
 
 class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    register_user_and_another_user
+
     @post = posts(:one)
     @post_params = {
       title: @post.title,
@@ -13,9 +15,10 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
     @another_post = posts(:two)
   end
 
-  # teardown do
-  #   Rails.cache.clear
-  # end
+  # TODO: needed?
+  teardown do
+    Rails.cache.clear
+  end
 
   test '#show' do
     get post_url(@post)
@@ -24,7 +27,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#new as User' do
-    sign_in users(:one)
+    sign_in @user
 
     get new_post_url
 
@@ -38,7 +41,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#create as User success' do
-    sign_in users(:one)
+    sign_in @user
 
     assert_difference('Post.count') do
       post posts_url, params: { post: @post_params }
@@ -47,7 +50,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#create as User failed' do
-    sign_in users(:one)
+    sign_in @user
 
     @post_params[:title] = nil
 
@@ -65,7 +68,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#edit as authorized User' do
-    sign_in users(:two)
+    sign_in @user
 
     get edit_post_url(@post)
 
@@ -73,7 +76,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#edit as unauthorized User' do
-    sign_in users(:one)
+    sign_in @another_user
 
     get edit_post_url(@post)
 
@@ -87,7 +90,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#update as authorized User success' do
-    sign_in users(:two)
+    sign_in @user
 
     patch post_url(@post), params: { post: { **@post_params, body: @another_post.body } }
     assert_redirected_to @post
@@ -97,7 +100,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#update as User failed' do
-    sign_in users(:two)
+    sign_in @user
     @post_params[:body] = nil
 
     patch post_url(@post), params: { post: @post_params }
@@ -106,7 +109,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#update as unauthorized User' do
-    sign_in users(:one)
+    sign_in @another_user
 
     patch post_url(@post), params: { post: { **@post_params, body: @another_post.body } }
     assert_redirected_to root_path
@@ -122,7 +125,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#destroy as authorized User' do
-    sign_in users(:two)
+    sign_in @user
 
     assert_difference('Post.count', -1) do
       delete post_url(@post)
@@ -131,7 +134,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#destroy as unauthorized User' do
-    sign_in users(:one)
+    sign_in @another_user
 
     assert_no_difference('Post.count') do
       delete post_url(@post)

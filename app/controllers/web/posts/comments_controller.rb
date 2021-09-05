@@ -37,7 +37,7 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
   end
 
   def load_comment
-    @comment = Post::Comment.find(params[:id])
+    @comment = PostComment.find(params[:id])
   end
 
   def authorize_user!

@@ -23,15 +23,16 @@
 #  post_id  (post_id => posts.id)
 #  user_id  (user_id => users.id)
 #
-class Post::Comment < ApplicationRecord
-  has_ancestry
+require 'test_helper'
 
-  belongs_to :user
-  belongs_to :post, inverse_of: :comments
+class PostCommentTest < ActiveSupport::TestCase
+  context 'associations' do
+    should belong_to(:user)
+    should belong_to(:post).inverse_of(:comments)
+  end
 
-  validates :content, presence: true, length: { maximum: 100 }
-
-  def to_s
-    content
+  context 'validations' do
+    should validate_presence_of(:content)
+    should validate_length_of(:content).is_at_most(100)
   end
 end

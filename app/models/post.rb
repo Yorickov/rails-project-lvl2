@@ -6,7 +6,6 @@
 #
 #  id               :integer          not null, primary key
 #  body             :text             not null
-#  likes_count      :integer
 #  title            :string           not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
@@ -26,8 +25,8 @@
 class Post < ApplicationRecord
   belongs_to :creator, class_name: 'User', foreign_key: :user_id, inverse_of: :posts
   belongs_to :post_category
-  has_many :comments, class_name: 'Post::Comment', inverse_of: :post, dependent: :destroy
-  has_many :likes, class_name: 'Post::Like', inverse_of: :post, dependent: :destroy
+  has_many :comments, class_name: 'PostComment', inverse_of: :post, dependent: :destroy
+  has_many :likes, class_name: 'PostLike', inverse_of: :post, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 50 }

@@ -8,11 +8,14 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'bin/**'
+    - 'config/**/*'
     - 'db/schema.rb'
+    - Gemfile
+    - Rakefile
+    - cofing.ru
     - 'db/migrate/**'
     - 'vendor/**/*'
     - 'node_modules/**/*'
-    - 'config/**/*'
 
 Layout/LineLength:
   Max: 120
@@ -37,8 +40,13 @@ Style/IfUnlessModifier:
 Metrics/BlockLength:
   Enabled: false
 
-Style/AsciiComments:
+Gemspec/RequiredRubyVersion:
   Enabled: false
 
 Metrics/ClassLength:
-  Enabled: false
+  Exclude:
+    - 'test/**/*'
+
+# Style/AsciiComments:
+#   Enabled: false
+

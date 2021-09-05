@@ -21,16 +21,9 @@
 #  post_id  (post_id => posts.id)
 #  user_id  (user_id => users.id)
 #
-require 'test_helper'
+class PostLike < ApplicationRecord
+  belongs_to :post, inverse_of: :likes
+  belongs_to :user
 
-class Post::LikeTest < ActiveSupport::TestCase
-  context 'associations' do
-    should belong_to(:user)
-    # FIXME: inverse not needed?
-    should belong_to(:post).inverse_of(:likes)
-  end
-
-  context 'validations' do
-    should validate_uniqueness_of(:post).scoped_to(:user_id)
-  end
+  validates :post, uniqueness: { scope: :user_id }
 end
