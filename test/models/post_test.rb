@@ -27,7 +27,7 @@ require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
   context 'associations' do
-    should belong_to(:user)
+    should belong_to(:creator).class_name('User').with_foreign_key(:user_id).inverse_of(:posts)
     should belong_to(:post_category).class_name('PostCategory')
     should have_many(:comments).dependent(:destroy)
     should have_many(:likes).dependent(:destroy)

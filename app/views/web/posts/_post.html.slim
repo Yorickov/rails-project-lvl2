@@ -9,4 +9,4 @@
       small.me-3.text-muted = t('.likable', likes_count: post.likes.size)
       small.me-3.text-muted = t('.comments_count', count: post.comments.length)
       small.me-3.text-muted = time_ago(post.created_at)
-      small.text-muted = post.user.email
+      small.text-muted = post.creator.email

@@ -11,7 +11,7 @@
     hr
     .d-flex
       .me-auto
-        span.fst-italic.me-3 = @post.user.email
+        span.fst-italic.me-3 = @post.creator.email
         span.fst-italic = time_ago(@post.created_at)
 
       div

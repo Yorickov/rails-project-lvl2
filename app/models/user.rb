@@ -34,10 +34,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable,
          :confirmable, :recoverable, :rememberable, :trackable
 
-  has_many :posts, dependent: :destroy
+  has_many :posts, inverse_of: 'creator', dependent: :destroy
   has_many :post_comments, class_name: 'Post::Comment', dependent: :destroy
 
   def author_of?(resource)
-    resource.user == self
+    resource.user_id == id
   end
 end

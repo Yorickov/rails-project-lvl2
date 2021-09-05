@@ -24,7 +24,7 @@
 #  user_id           (user_id => users.id)
 #
 class Post < ApplicationRecord
-  belongs_to :user
+  belongs_to :creator, class_name: 'User', foreign_key: 'user_id', inverse_of: 'posts'
   belongs_to :post_category
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy

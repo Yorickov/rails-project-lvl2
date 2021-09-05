@@ -25,27 +25,27 @@
 one:
   title: $LABEL
   body: '<%= Faker::Lorem.paragraph_by_chars(number: 500) %>'
-  user: two
+  creator: two
   post_category: sport
   likes_count: 2
 
 two:
   title: $LABEL
   body: '<%= Faker::Lorem.paragraph_by_chars(number: 200) %>'
-  user: one
+  creator: one
   post_category: science
   likes_count: 1
 
 three:
   title: $LABEL
   body: '<%= Faker::Lorem.paragraph_by_chars(number: 400) %>'
-  user: two
+  creator: two
   post_category: science
   likes_count: nil
 
 four:
   title: $LABEL
   body: '<%= Faker::Lorem.paragraph_by_chars(number: 400) %>'
-  user: admin
+  creator: admin
   post_category: travel
   likes_count: nil

@@ -25,7 +25,7 @@ ru:
       post:
         body: Тело
         title: Название
-        user: Пользователь
+        creator: Создатель
         post_category: Категория
       post_category:
         name: Названия

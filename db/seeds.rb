@@ -28,12 +28,12 @@ PostCategory.create!([{ name: 'sport' }, { name: 'science' }])
 
 Post.create!(
   [
-    { user: User.first,
+    { creator: User.first,
       title: Faker::Lorem.sentence,
       body: Faker::Lorem.paragraph_by_chars(number: 400),
       post_category: PostCategory.first,
       likes_count: nil },
-    { user: User.second,
+    { creator: User.second,
       title: Faker::Lorem.sentence,
       body: Faker::Lorem.paragraph_by_chars(number: 300),
       post_category: PostCategory.second,

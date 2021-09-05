@@ -36,7 +36,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   context 'associations' do
-    should have_many(:posts).dependent(:destroy)
+    should have_many(:posts).inverse_of(:creator).dependent(:destroy)
     should have_many(:post_comments).dependent(:destroy).class_name('Post::Comment')
   end
 
