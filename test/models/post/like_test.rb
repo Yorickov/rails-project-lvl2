@@ -26,7 +26,8 @@ require 'test_helper'
 class Post::LikeTest < ActiveSupport::TestCase
   context 'associations' do
     should belong_to(:user)
-    should belong_to(:post)
+    # FIXME: inverse not needed?
+    should belong_to(:post).inverse_of(:likes)
   end
 
   context 'validations' do

@@ -27,7 +27,7 @@ class Post::Comment < ApplicationRecord
   has_ancestry
 
   belongs_to :user
-  belongs_to :post
+  belongs_to :post, inverse_of: :comments
 
   validates :content, presence: true, length: { maximum: 100 }
 
