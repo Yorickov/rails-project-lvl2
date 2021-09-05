@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 require 'faker'
-require 'simplecov'
-SimpleCov.start 'rails'
+
+if ENV['RAILS_ENV'] == 'test'
+  require 'simplecov'
+  SimpleCov.start 'basic'
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'

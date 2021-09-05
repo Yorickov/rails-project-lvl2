@@ -26,4 +26,4 @@ make seed # load fixtures
 
 ## Deploy
 
-[Heroku](https://blog-collective.herokuapp.com/)
+[Heroku](https://same-blog.herokuapp.com/)

@@ -5,7 +5,6 @@
     .card-text.text-truncate.mb-2
       = post.body
     .card-text.text-end.mb-1
-      / TODO: add counter-cache to comments
       small.me-3.text-muted = t('.likes_count', likes_count: post.likes.size)
       small.me-3.text-muted = t('.comments_count', count: post.comments.size)
       small.me-3.text-muted = time_ago(post.created_at)
