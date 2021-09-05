@@ -28,7 +28,7 @@ require 'test_helper'
 class PostCommentTest < ActiveSupport::TestCase
   context 'associations' do
     should belong_to(:user)
-    should belong_to(:post).inverse_of(:comments)
+    should belong_to(:post)
   end
 
   context 'validations' do

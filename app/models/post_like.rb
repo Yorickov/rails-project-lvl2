@@ -22,7 +22,7 @@
 #  user_id  (user_id => users.id)
 #
 class PostLike < ApplicationRecord
-  belongs_to :post, inverse_of: :likes
+  belongs_to :post
   belongs_to :user
 
   validates :post, uniqueness: { scope: :user_id }

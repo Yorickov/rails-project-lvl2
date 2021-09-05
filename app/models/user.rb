@@ -29,7 +29,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable, :recoverable, :rememberable, :trackable
 
   has_many :posts, inverse_of: 'creator', dependent: :destroy
-  has_many :post_comments, class_name: 'PostComment', inverse_of: :user, dependent: :destroy
 
   def author_of?(resource)
     resource.user_id == id
