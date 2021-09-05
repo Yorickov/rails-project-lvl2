@@ -32,4 +32,4 @@ en:
         comments_count:
           one: "%{count} comment"
           other: "%{count} comments"
-        likable: "Liked: %{likes_count}"
+        likes_count: "Liked: %{likes_count}"

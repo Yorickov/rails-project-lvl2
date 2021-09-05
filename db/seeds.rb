@@ -15,12 +15,10 @@ User.create!(
   [
     { email: 'admin@email.com',
       password: 'adminsecret',
-      password_confirmation: 'adminsecret',
-      confirmed_at: Time.current },
+      password_confirmation: 'adminsecret' },
     { email: 'user@email.com',
       password: 'usersecret',
-      password_confirmation: 'usersecret',
-      confirmed_at: Time.current }
+      password_confirmation: 'usersecret' }
   ]
 )
 
@@ -39,9 +37,6 @@ Post.create!(
   ]
 )
 
-PostLike.create!(
-  [
-    { user: User.first,
-      post: Post.second }
-  ]
-)
+PostLike.create!(user: User.first, post: Post.first)
+
+PostComment.create!(user: User.first, post: Post.second, content: Faker::Lorem.paragraph_by_chars(number: 50))

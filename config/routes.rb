@@ -18,9 +18,6 @@
 #                               PUT    /users(.:format)                                        devise/registrations#update
 #                               DELETE /users(.:format)                                        devise/registrations#destroy
 #                               POST   /users(.:format)                                        devise/registrations#create
-#         new_user_confirmation GET    /users/confirmation/new(.:format)                       devise/confirmations#new
-#             user_confirmation GET    /users/confirmation(.:format)                           devise/confirmations#show
-#                               POST   /users/confirmation(.:format)                           devise/confirmations#create
 #                          root GET    /                                                       web/home#index
 #                 post_comments POST   /posts/:post_id/comments(.:format)                      web/posts/comments#create
 #             edit_post_comment GET    /posts/:post_id/comments/:id/edit(.:format)             web/posts/comments#edit

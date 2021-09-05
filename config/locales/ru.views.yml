@@ -34,4 +34,4 @@ ru:
           few: "%{count} комментария"
           many: "%{count} комментариев"
           other: "%{count} комментария"
-        likable: "Понравилось: %{likes_count}"
+        likes_count: "Понравилось: %{likes_count}"
