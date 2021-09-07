@@ -20,8 +20,6 @@ ru:
     show: Показать
 
   messages:
-    comment_created: Комментарий создан
-    comment_updated: Комментарий обновлен
     double_like: Вы уже лайкнули эту статью
     empty_comment: Комментарий не может быть пустым
     post_destroyed: Статья удалена

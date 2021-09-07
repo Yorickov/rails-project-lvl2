@@ -9,7 +9,7 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
   def create
     @comment = @post.comments.new(post_comment_params.merge(user: current_user))
     if @comment.save
-      redirect_to @post, notice: t('messages.comment_created')
+      redirect_to @post
     else
       flash.now[:notice] = t('messages.empty_comment')
       render 'web/posts/show', status: :unprocessable_entity
@@ -20,9 +20,9 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
 
   def update
     if @comment.update(post_comment_params)
-      redirect_to @post, notice: t('messages.comment_updated')
+      redirect_to @post
     else
-      render :edit, status: :unprocessable_entity
+      render 'web/posts/show', status: :unprocessable_entity
     end
   end
 

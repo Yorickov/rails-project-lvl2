@@ -20,8 +20,6 @@ en:
     show: Show
 
   messages:
-    comment_created: Comment created
-    comment_updated: Comment updated
     double_like: You've already liked this post
     empty_comment: Comment can't be blank
     post_destroyed: Post destroyed
