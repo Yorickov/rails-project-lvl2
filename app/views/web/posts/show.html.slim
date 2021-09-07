@@ -6,12 +6,12 @@
 
 .row
   h1 = @post.title
-  section.mb-2
+  section.mt-2
     p = @post.body
-    hr
+
     .d-flex
-      .me-auto
-        span.fst-italic.me-3 = @post.creator.email
+      .me-auto.mb-2
+        span.fst-italic.fw-bolder.me-3 = @post.creator.email
         span.fst-italic = time_ago(@post.created_at)
 
       div
@@ -28,6 +28,7 @@
         = link_to t('links.edit'), edit_post_path(@post), class: 'btn btn-sm btn-outline-primary me-2'
         = button_to t('links.delete'), @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-primary'
 
+    hr
   - if user_signed_in?
     section.mb-4
       h6.mt-3 = t('.comment')

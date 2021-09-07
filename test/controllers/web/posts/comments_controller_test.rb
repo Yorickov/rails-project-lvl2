@@ -45,28 +45,6 @@ class Web::Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
   end
 
-  test '#edit as authorized User' do
-    sign_in @user
-
-    get edit_post_comment_url(@post, @comment)
-
-    assert_response :success
-  end
-
-  test '#edit as unauthorized User' do
-    sign_in @another_user
-
-    get edit_post_comment_url(@post, @comment)
-
-    assert_redirected_to root_path
-  end
-
-  test '#edit as Guest' do
-    get edit_post_comment_url(@post, @comment)
-
-    assert_redirected_to new_user_session_url
-  end
-
   test '#update as authorized User success' do
     sign_in @user
 
@@ -89,7 +67,7 @@ class Web::Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
   test '#update as unauthorized User' do
     sign_in @another_user
 
-    patch post_comment_url(@post, @comment), params: { post_comment: @another_post_comment_params }
+    patch post_comment_url(@post, @comment), params: { post_comment: @another_comment_params }
 
     assert_redirected_to root_path
 

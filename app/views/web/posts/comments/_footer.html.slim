@@ -1,9 +1,9 @@
-- if @comment.errors.any? && (@comment.id == comment.id || comment.parent_of?(@comment))
-  .text-danger = @comment.errors[:content].first
+- if @comment.errors_with? comment
+  .text-danger = @comment.errors[:content].join
 
-a.small.text-decoration-none.text-muted.text-secondary(href="#new_post_comment-#{comment.id}" data-bs-toggle="collapse" role="button"
-                                                       aria-expanded="false" aria-controls="#new_post_comment-#{comment.id}")
-  = t('.reply')
+= link_to(t('.reply'), "#new_post_comment-#{comment.id}", class: "small text-decoration-none text-muted text-secondary",
+          data: { 'bs-toggle': 'collapse' }, role: 'button', aria: { expanded: false, controls: "#new_post_comment-#{comment.id}" })
+
 .collapse(id="new_post_comment-#{comment.id}")
   - if user_signed_in?
     = render 'web/posts/comments/form', comment: comment.post.comments.new, url: post_comments_path(comment.post), parent_id: comment.id
@@ -12,8 +12,8 @@ a.small.text-decoration-none.text-muted.text-secondary(href="#new_post_comment-#
     = link_to t('.login'), new_user_session_path, class: 'card-link ms-2 text-decoration-none'
 
 - if user_signed_in? && current_user.author_of?(comment)
-  a.ms-1.small.text-decoration-none.text-muted.text-secondary(href="#edit_post_comment-#{comment.id}" data-bs-toggle="collapse" role="button"
-                                                         aria-expanded="false" aria-controls="#edit_post_comment-#{comment.id}")
-    = t('links.edit')
+  = link_to(t('links.edit'), "#edit_post_comment-#{comment.id}", class: "ms-1 small text-decoration-none text-muted text-secondary",
+            data: { 'bs-toggle': 'collapse' }, role: 'button', aria: { expanded: false, controls: "#edit_post_comment-#{comment.id}" })
+
   .collapse(id="edit_post_comment-#{comment.id}")
     = render 'web/posts/comments/form', comment: comment, url: post_comment_path(comment.post, comment)

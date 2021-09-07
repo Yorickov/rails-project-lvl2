@@ -34,4 +34,9 @@ class PostComment < ApplicationRecord
   def to_s
     content
   end
+
+  def errors_with?(comment)
+    errors.any? &&
+      eql?(comment) || child_of?(comment) && new_record?
+  end
 end

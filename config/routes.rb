@@ -20,7 +20,6 @@
 #                               POST   /users(.:format)                                        devise/registrations#create
 #                          root GET    /                                                       web/home#index
 #                 post_comments POST   /posts/:post_id/comments(.:format)                      web/posts/comments#create
-#             edit_post_comment GET    /posts/:post_id/comments/:id/edit(.:format)             web/posts/comments#edit
 #                  post_comment PATCH  /posts/:post_id/comments/:id(.:format)                  web/posts/comments#update
 #                               PUT    /posts/:post_id/comments/:id(.:format)                  web/posts/comments#update
 #                    post_likes POST   /posts/:post_id/likes(.:format)                         web/posts/likes#create
@@ -42,7 +41,7 @@ Rails.application.routes.draw do
 
     resources :posts, except: :index do
       scope module: :posts do
-        resources :comments, only: %i[create edit update]
+        resources :comments, only: %i[create update]
         resources :likes, only: %i[create destroy]
       end
     end
