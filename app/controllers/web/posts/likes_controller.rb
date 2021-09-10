@@ -1,28 +1,19 @@
 # frozen_string_literal: true
 
-class Web::Posts::LikesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :load_post
-
+class Web::Posts::LikesController < Web::Posts::ApplicationController
   def create
-    @like = @post.likes.build(user: current_user)
+    @like = resource_post.likes.build(user: current_user)
     if @like.save
-      redirect_to @post
+      redirect_to resource_post
     else
-      redirect_to @post, alert: t('messages.double_like')
+      redirect_to resource_post, alert: t('messages.double_like')
     end
   end
 
   def destroy
-    @like = PostLike.find(params[:id])
+    @like = resource_post.likes.find(params[:id])
     @like.destroy
 
-    redirect_to @post
-  end
-
-  private
-
-  def load_post
-    @post = Post.find(params[:post_id])
+    redirect_to resource_post
   end
 end
