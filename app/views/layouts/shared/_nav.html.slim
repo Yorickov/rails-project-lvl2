@@ -2,13 +2,20 @@ header
   nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-1
     .container-fluid
       = link_to t('title'), root_path, class: 'navbar-brand'
-      button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" \
-                            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation")
+
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-expanded='false' aria-controls='navbarNavDropdown')
         span.navbar-toggler-icon
 
       .collapse.navbar-collapse#navbarNavDropdown
         ul.navbar-nav
+          li.nav-item.active.dropdown
+            a.nav-link.dropdown-toggle#navbarLocaleDropdown(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') = I18n.locale
+            ul.dropdown-menu.dropdown-menu-right(aria-labelledby='navbarLocaleDropdown')
+              - I18n.available_locales.without(I18n.locale).each do |locale|
+                li = link_to locale.name, url_for(lang: locale), class: 'dropdown-item'
+          / TODO: replace with current_user post
           li.nav-item = link_to t('.posts'), root_path, class: 'nav-link active'
+
         ul.navbar-nav.ms-auto
           - if user_signed_in?
             li
@@ -16,16 +23,16 @@ header
                 i.fas.fa-plus-circle
                 span.ms-2 = t('.add_post')
             li.nav-item.active.dropdown
-              a.nav-link.dropdown-toggle(id="navbarDropdownMenuLink" role="button" \
-                                         data-bs-toggle="dropdown" aria-expanded="false") = current_user.email
-              ul.dropdown-menu.dropdown-menu-right(aria-labelledby="navbarDropdownMenuLink")
+              a.nav-link.dropdown-toggle#navbarSessionDropdown(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') = current_user.email
+              ul.dropdown-menu.dropdown-menu-right(aria-labelledby='navbarSessionDropdown')
                 li = link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item'
           - else
             li.nav-item = link_to t('.login'), new_user_session_path, class: 'nav-link'
             li.nav-item = link_to t('.sign_up'), new_user_registration_path, class: 'nav-link'
-          li.nav-item.d-flex.align-items-center.ms-auto
-            - I18n.available_locales.without(I18n.locale).each do |locale|
-              = link_to url_for(lang: locale) do
-                = image_pack_tag "flag-#{locale}.svg", width: 25, alt: "#{t(".switch_lang", lang: "#{locale}")}"
+
+          / li.nav-item.d-flex.align-items-center.ms-auto
+          /   - I18n.available_locales.without(I18n.locale).each do |locale|
+          /     = link_to url_for(lang: locale) do
+          /       = image_pack_tag "flag-#{locale}.svg", width: 25, alt: "#{t(".switch_lang", lang: "#{locale}")}"
 
   = render_flash_messages dismissible: true

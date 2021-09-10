@@ -6,6 +6,7 @@
 
 .row
   h1 = @post.title
+
   section.mt-2
     p = @post.body
 
@@ -29,6 +30,7 @@
         = button_to t('links.delete'), @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-primary'
 
     hr
+
   - if user_signed_in?
     section.mb-4
       h6.mt-3 = t('.comment')

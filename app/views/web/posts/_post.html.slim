@@ -2,8 +2,8 @@
   .card-body
     h5.card-title
       = link_to post.title, post, class: 'text-decoration-none'
-    .card-text.text-truncate.mb-2
-      = post.body
+    .card-text.mb-2
+      = preview_of(post.body)
     .card-text.text-end.mb-1
       small.me-3.text-muted = t('.likes_count', likes_count: post.likes.size)
       small.me-3.text-muted = t('.comments_count', count: post.comments.size)
