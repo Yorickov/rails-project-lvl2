@@ -21,6 +21,7 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
     if comment.update(post_comment_params)
       redirect_to post
     else
+      @comment = comment
       render 'web/posts/show', status: :unprocessable_entity
     end
   end
