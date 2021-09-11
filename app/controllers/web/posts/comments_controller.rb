@@ -2,7 +2,7 @@
 
 class Web::Posts::CommentsController < Web::Posts::ApplicationController
   def create
-    form = Web::Post::CommentForm.new(post_comment_params)
+    form = Web::PostCommentForm.new(post_comment_params)
     @comment = post.comments.build(form.attributes)
     @comment.user = current_user
     if @comment.save
@@ -20,7 +20,7 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
       redirect_to root_path and return
     end
 
-    comment = @comment.becomes(Web::Post::CommentForm)
+    comment = @comment.becomes(Web::PostCommentForm)
     if comment.update(post_comment_params)
       redirect_to post
     else
