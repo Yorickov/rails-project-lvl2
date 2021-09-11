@@ -6,16 +6,17 @@ class Web::PostsController < Web::ApplicationController
   before_action :authorize_user!, only: %i[edit update destroy]
 
   def show
-    @comment = @post.comments.new
+    @comment = PostComment.new
     @current_user_like = @post.likes.find_by(user: current_user)
   end
 
   def new
-    @post = current_user.posts.new
+    @post = Post.new
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    form = Web::PostForm.new(post_params)
+    @post = current_user.posts.build(form.attributes)
     if @post.save
       redirect_to @post, notice: t('messages.post_created')
     else
@@ -26,9 +27,11 @@ class Web::PostsController < Web::ApplicationController
   def edit; end
 
   def update
-    if @post.update(post_params)
+    post = @post.becomes(Web::PostForm)
+    if post.update(post_params)
       redirect_to @post, notice: t('messages.post_updated')
     else
+      @post = post.becomes(Post)
       render :edit, status: :unprocessable_entity
     end
   end
@@ -42,7 +45,7 @@ class Web::PostsController < Web::ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_category_id)
+    params.require(:post)
   end
 
   def load_post

@@ -85,4 +85,7 @@ gem 'ancestry'
 
 gem 'bootstrap5-kaminari-views'
 gem 'kaminari'
+
 gem 'turbo-rails'
+
+gem 'active_form_model'

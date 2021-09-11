@@ -2,18 +2,18 @@
 
 class Web::Posts::LikesController < Web::Posts::ApplicationController
   def create
-    @like = resource_post.likes.build(user: current_user)
+    @like = post.likes.build(user: current_user)
     if @like.save
-      redirect_to resource_post
+      redirect_to post
     else
-      redirect_to resource_post, alert: t('messages.double_like')
+      redirect_to post, alert: t('messages.double_like')
     end
   end
 
   def destroy
-    @like = resource_post.likes.find(params[:id])
+    @like = post.likes.find(params[:id])
     @like.destroy
 
-    redirect_to resource_post
+    redirect_to post
   end
 end
