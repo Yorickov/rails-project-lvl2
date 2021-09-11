@@ -14,6 +14,7 @@ require 'rails/test_help'
 Dir[Rails.root.join('test/support/**/*.rb')].each { |f| require f }
 
 class ActiveSupport::TestCase
+  include PunditHelper
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
 

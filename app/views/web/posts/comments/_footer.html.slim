@@ -12,7 +12,7 @@ a.small.text-decoration-none.text-muted.text-secondary(href="#new_post_comment-#
     span = t('.auth_required')
     = link_to t('.login'), new_user_session_path, class: 'card-link ms-2 text-decoration-none'
 
-- if user_signed_in? && current_user.author_of?(comment)
+- if user_signed_in? && policy(comment).update?
   a.ms-1.small.text-decoration-none.text-muted.text-secondary(href="#edit_post_comment-#{comment.id}" data-bs-toggle='collapse' role='button'
                                                               aria-expanded='false' aria-controls="#edit_post_comment-#{comment.id}")
     = t('links.edit')

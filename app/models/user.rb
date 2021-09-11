@@ -29,8 +29,4 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable, :recoverable, :rememberable, :trackable
 
   has_many :posts, inverse_of: 'creator', dependent: :destroy
-
-  def author_of?(resource)
-    resource.user_id == id
-  end
 end

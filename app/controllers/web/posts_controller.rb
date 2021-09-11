@@ -3,7 +3,6 @@
 class Web::PostsController < Web::ApplicationController
   before_action :authenticate_user!, except: %i[show]
   before_action :load_post, only: %i[show edit update destroy]
-  before_action :authorize_user!, only: %i[edit update destroy]
 
   def show
     @comment = PostComment.new
@@ -24,9 +23,13 @@ class Web::PostsController < Web::ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize @post
+  end
 
   def update
+    authorize @post
+
     post = @post.becomes(Web::PostForm)
     if post.update(post_params)
       redirect_to @post, notice: t('messages.post_updated')
@@ -37,6 +40,8 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def destroy
+    authorize @post
+
     @post.destroy
 
     redirect_to root_path, notice: t('messages.post_destroyed')
@@ -50,9 +55,5 @@ class Web::PostsController < Web::ApplicationController
 
   def load_post
     @post = Post.find(params[:id])
-  end
-
-  def authorize_user!
-    redirect_to root_path, notice: t('messages.unauthorized_user') unless current_user.author_of?(@post)
   end
 end

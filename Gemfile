@@ -89,3 +89,5 @@ gem 'kaminari'
 gem 'turbo-rails'
 
 gem 'active_form_model'
+
+gem 'pundit'

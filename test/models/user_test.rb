@@ -33,9 +33,4 @@ class UserTest < ActiveSupport::TestCase
   context 'associations' do
     should have_many(:posts).inverse_of(:creator).dependent(:destroy)
   end
-
-  test '#author_of?' do
-    assert @user.author_of? posts(:one)
-    assert_not @user.author_of? posts(:two)
-  end
 end

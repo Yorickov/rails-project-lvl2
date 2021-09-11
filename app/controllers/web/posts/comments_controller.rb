@@ -15,10 +15,7 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
 
   def update
     @comment = post.comments.find(params[:id])
-    unless current_user.author_of?(@comment)
-      flash[:notice] = t('messages.unauthorized_user')
-      redirect_to root_path and return
-    end
+    authorize @comment
 
     comment = @comment.becomes(Web::PostCommentForm)
     if comment.update(post_comment_params)
