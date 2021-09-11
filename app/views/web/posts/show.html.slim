@@ -15,14 +15,15 @@
         span.fst-italic.fw-bolder.me-3 = @post.creator.email
         span.fst-italic = time_ago(@post.created_at)
 
-      div
-        span.mx-2 = @post.likes.size
-        - if @current_user_like
-          = link_to post_like_path(@post, @current_user_like), method: :delete do
-            i.fas.fa-thumbs-up
-        - else
-          = link_to post_likes_path(@post), method: :post do
-            i.far.fa-thumbs-up
+      turbo-frame id='comment'
+        .d-flex.align-items-center
+          span.mx-1 = @post.likes.size
+          - if @current_user_like
+            = button_to post_like_path(@post, @current_user_like), method: :delete, class: 'btn btn-sm' do
+              i.fas.fa-thumbs-up
+          - else
+            = button_to post_likes_path(@post), method: :post, class: 'btn btn-sm' do
+              i.far.fa-thumbs-up
 
     .d-flex.mt-3
       = link_to t('links.back'), root_path, class: 'btn btn-sm btn-outline-primary me-2'
