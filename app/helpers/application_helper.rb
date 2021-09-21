@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  DEFAULT_PREVIEW_BODY_LENGTH = 300
+  DEFAULT_PREVIEW_LENGTH = 60
 
   def time_ago(time)
     time_ago_in_words(time.in_time_zone)
@@ -11,8 +11,8 @@ module ApplicationHelper
     "&copy; #{Time.current.year} #{t('.project')}".html_safe # rubocop:disable Rails:OutputSafety
   end
 
-  def preview_of(post_body, length = DEFAULT_PREVIEW_BODY_LENGTH)
-    post_body.truncate(length)
+  def post_preview(post_body, length_in_words = DEFAULT_PREVIEW_LENGTH)
+    post_body.truncate_words(length_in_words)
   end
 
   def nested_comments(comments)

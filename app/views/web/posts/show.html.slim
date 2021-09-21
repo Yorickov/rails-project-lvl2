@@ -29,7 +29,7 @@
       = link_to t('links.back'), root_path, class: 'btn btn-sm btn-outline-primary me-2'
       - if user_signed_in? && policy(@post).update?
         = link_to t('links.edit'), edit_post_path(@post), class: 'btn btn-sm btn-outline-primary me-2'
-        = button_to t('links.delete'), @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-primary'
+        = link_to t('links.delete'), @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-primary'
 
     hr
 

@@ -2,7 +2,7 @@
 
 class Web::PostsController < Web::ApplicationController
   before_action :authenticate_user!, except: %i[show]
-  before_action :load_post, only: %i[show edit update destroy]
+  before_action :load_post, except: %i[new create]
 
   def show
     @comment = PostComment.new

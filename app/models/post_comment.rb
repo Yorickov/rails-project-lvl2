@@ -37,6 +37,6 @@ class PostComment < ApplicationRecord
 
   def errors_with?(comment)
     errors.any? &&
-      id == comment.id || child_of?(comment) && new_record?
+      (id == comment.id || (child_of?(comment) && new_record?))
   end
 end
