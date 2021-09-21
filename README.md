@@ -1,8 +1,6 @@
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/Yorickov/rails-project-lvl2/actions/workflows/hexlet-check.yml/badge.svg?branch=)](https://github.com/Yorickov/rails-project-lvl2/actions?query=branch:)
+### Hexlet tests and linter status: [![Actions Status](https://github.com/Yorickov/rails-project-lvl2/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Yorickov/rails-project-lvl2/actions)
 
-### Author tests and linter status:
-[![Actions Status](https://github.com/Yorickov/rails-project-lvl2/actions/workflows/master.yml/badge.svg)](https://github.com/Yorickov/rails-project-lvl2/actions)
+### Author tests and linter status: [![Actions Status](https://github.com/Yorickov/rails-project-lvl2/actions/workflows/master.yml/badge.svg)](https://github.com/Yorickov/rails-project-lvl2/actions)
 
 # Blog
 
