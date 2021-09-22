@@ -3,8 +3,8 @@ ru:
     shared:
       nav:
         add_post: Добавить статью
-        login: Войти
-        logout: Выйти
+        sign_in: Войти
+        sign_out: Выйти
         posts: Статьи
         sign_up: Регистрация
         switch_lang: Поменять язык на %{lang}

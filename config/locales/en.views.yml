@@ -3,8 +3,8 @@ en:
     shared:
       nav:
         add_post: Add post
-        login: Log in
-        logout: Log out
+        sign_in: Log in
+        sign_out: Log out
         posts: Posts
         sign_up: Sign up
         switch_lang: Switch language to %{lang}

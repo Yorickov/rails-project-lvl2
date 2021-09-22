@@ -14,9 +14,6 @@ import '@fortawesome/fontawesome-free/js/regular.js';
 import '@fortawesome/fontawesome-free/js/fontawesome.js';
 
 import '@hotwired/turbo-rails';
-// TODO: change to opt-in strategy?
-// import { Turbo } from '@hotwired/turbo-rails';
-// Turbo.session.drive = false;
 
 Rails.start();
 ActiveStorage.start();

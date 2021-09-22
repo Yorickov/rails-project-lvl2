@@ -6,10 +6,6 @@
 if Rails.env.development?
   require 'annotate'
 
-  task routes: :environment do
-    puts `bin/rails routes -g 'root|landing|devise|post|comment|like'`
-  end
-
   task set_annotation_options: :environment do
     Annotate.set_defaults(
       'active_admin' => 'false',
