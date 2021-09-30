@@ -24,7 +24,6 @@ end
 
 class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-  include RegisterUsers
   include TurboAssertionsHelper
 end
 
