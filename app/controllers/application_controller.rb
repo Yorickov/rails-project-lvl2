@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include Pundit
+  include DeviseAuth
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -9,17 +10,6 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     I18n.locale == I18n.default_locale ? {} : { lang: I18n.locale }
-  end
-
-  # TODO: precise path
-  def after_sign_in_path_for(_user)
-    flash['notice'] = t('welcome', user: current_user.email)
-    root_path
-  end
-
-  def after_sign_out_path_for(_resource_or_scope)
-    flash['notice'] = t('goodbye')
-    request.referer
   end
 
   private
