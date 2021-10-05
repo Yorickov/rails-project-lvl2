@@ -30,9 +30,9 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   test '#create' do
     sign_in @user
 
-    assert_difference('Post.count') do
-      post posts_url, params: { post: @post_params }
-    end
+    post posts_url, params: { post: @post_params }
+
+    assert_response :redirect
 
     post = Post.find_by(@post_params)
     assert { post }
@@ -43,9 +43,12 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
 
     @post_params[:title] = nil
 
-    assert_no_difference('Post.count') do
-      post posts_url, params: { post: @post_params }
-    end
+    post posts_url, params: { post: @post_params }
+
+    assert_response :unprocessable_entity
+
+    post = Post.find_by(@post_params)
+    assert { !post }
   end
 
   test '#edit' do
@@ -60,6 +63,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
 
     patch post_url(@post), params: { post: @post_params }
+
     assert_redirected_to @post
 
     @post.reload
@@ -69,9 +73,9 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   test '#destroy' do
     sign_in @user
 
-    assert_difference('Post.count', -1) do
-      delete post_url(@post)
-    end
+    delete post_url(@post)
+
+    assert_redirected_to root_path
 
     post = Post.find_by(id: @post.id)
     assert { !post }

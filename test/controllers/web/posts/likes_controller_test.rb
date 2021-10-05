@@ -10,34 +10,21 @@ class Web::Posts::LikesControllerTest < ActionDispatch::IntegrationTest
     @like1 = post_likes(:one)
   end
 
-  test '#create no more than one like as User' do
+  test '#create like' do
     sign_in @user
 
-    assert_difference('PostLike.count') do
-      post post_likes_url(@post2)
-    end
-    assert_no_difference('PostLike.count') do
-      post post_likes_url(@post2)
-    end
-  end
-
-  test '#create as Guest' do
     post post_likes_url(@post2)
 
-    assert_redirected_to new_user_session_path
+    like = PostLike.find_by(user: @user, post: @post2)
+    assert { like }
   end
 
   test '#destroy as User' do
     sign_in @user
 
-    assert_difference('PostLike.count', -1) do
-      delete post_like_url(@post1, @like1)
-    end
-  end
-
-  test '#destroy as Guest' do
     delete post_like_url(@post1, @like1)
 
-    assert_redirected_to new_user_session_path
+    like = PostLike.find_by(user: @user, post: @post1)
+    assert { !like }
   end
 end

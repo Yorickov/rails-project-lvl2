@@ -13,9 +13,9 @@ class Web::Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
   test '#create' do
     sign_in @user
 
-    assert_difference('PostComment.count') do
-      post post_comments_url(@post), params: { post_comment: @comment_params }
-    end
+    post post_comments_url(@post), params: { post_comment: @comment_params }
+
+    assert_redirected_to @post
 
     comment = PostComment.find_by(@comment_params)
     assert { comment }
@@ -24,11 +24,14 @@ class Web::Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
   test '#create without content' do
     sign_in @user
 
-    assert_no_difference('PostComment.count') do
-      post post_comments_url(@post), params: { post_comment: { content: nil } }
-    end
+    @comment_params[:content] = nil
+
+    post post_comments_url(@post), params: { post_comment: @comment_params }
 
     assert_response :unprocessable_entity
+
+    comment = PostComment.find_by(@comment_params)
+    assert { !comment }
   end
 
   test '#update' do
