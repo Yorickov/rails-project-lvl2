@@ -2,9 +2,9 @@
 
 class Web::PostsController < Web::ApplicationController
   before_action :authenticate_user!, except: %i[show]
-  before_action :load_post, except: %i[new create]
 
   def show
+    @post = Post.find(params[:id])
     @comment = PostComment.new
     @current_user_like = @post.likes.find_by(user: current_user)
   end
@@ -24,10 +24,12 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
     authorize @post
   end
 
   def update
+    @post = Post.find(params[:id])
     authorize @post
 
     if @post.update(post_params)
@@ -38,6 +40,7 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
     authorize @post
 
     @post.destroy
@@ -49,9 +52,5 @@ class Web::PostsController < Web::ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :post_category_id)
-  end
-
-  def load_post
-    @post = Post.find(params[:id])
   end
 end

@@ -89,3 +89,5 @@ gem 'kaminari'
 gem 'turbo-rails'
 
 gem 'pundit'
+
+gem 'rollbar'
