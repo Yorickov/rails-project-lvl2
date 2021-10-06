@@ -14,8 +14,8 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def create
-    form = Web::PostForm.new(post_params)
-    @post = current_user.posts.build(form.attributes)
+    @post = current_user.posts.build(post_params)
+
     if @post.save
       redirect_to @post, notice: t('messages.post_created')
     else
@@ -30,11 +30,9 @@ class Web::PostsController < Web::ApplicationController
   def update
     authorize @post
 
-    post = @post.becomes(Web::PostForm)
-    if post.update(post_params)
+    if @post.update(post_params)
       redirect_to @post, notice: t('messages.post_updated')
     else
-      @post = post.becomes(Post)
       render :edit, status: :unprocessable_entity
     end
   end
@@ -50,7 +48,7 @@ class Web::PostsController < Web::ApplicationController
   private
 
   def post_params
-    params.require(:post)
+    params.require(:post).permit(:title, :body, :post_category_id)
   end
 
   def load_post

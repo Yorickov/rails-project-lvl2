@@ -31,6 +31,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   context 'associations' do
-    should have_many(:posts).inverse_of(:creator).dependent(:destroy)
+    should have_many(:posts).inverse_of(:creator).with_foreign_key(:creator_id).dependent(:destroy)
   end
 end

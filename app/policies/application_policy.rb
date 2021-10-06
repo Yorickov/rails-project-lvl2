@@ -22,10 +22,4 @@ class ApplicationPolicy
 
     attr_reader :user, :scope
   end
-
-  protected
-
-  def author?
-    record.user_id == user.id
-  end
 end

@@ -10,4 +10,10 @@ class PostCommentPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  private
+
+  def author?
+    record.user == user
+  end
 end

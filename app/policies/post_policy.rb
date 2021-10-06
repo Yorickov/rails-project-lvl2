@@ -18,4 +18,10 @@ class PostPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  private
+
+  def author?
+    record.creator == user
+  end
 end
