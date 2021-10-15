@@ -6,7 +6,7 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
     if @comment.save
       redirect_to post
     else
-      flash.now[:notice] = t('messages.empty_comment')
+      flash.now[:notice] = t('messages.comment_can_not_be_empty')
       render 'web/posts/show', status: :unprocessable_entity
     end
   end

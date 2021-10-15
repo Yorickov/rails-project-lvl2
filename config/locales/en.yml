@@ -21,7 +21,7 @@ en:
 
   messages:
     double_like: You've already liked this post
-    empty_comment: Comment can't be blank
+    comment_can_not_be_empty: Comment can't be blank
     post_destroyed: Post destroyed
     post_created: Post created
     post_updated: Post updated
