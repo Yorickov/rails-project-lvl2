@@ -6,7 +6,7 @@ class Web::Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @post = posts(:one)
-    @comment = PostComment.create!(user: @user, post: @post, content: Faker::Lorem.paragraph_by_chars(number: 50))
+    @comment = post_comments(:one)
     @comment_params = { content: Faker::Lorem.paragraph_by_chars(number: 50) }
   end
 

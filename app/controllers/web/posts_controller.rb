@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Web::PostsController < Web::ApplicationController
-  before_action :authenticate_user!, except: %i[show]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def show
     @post = Post.find(params[:id])

@@ -2,8 +2,7 @@
 
 class Web::Posts::LikesController < Web::Posts::ApplicationController
   def create
-    @like = post.likes.build(user: current_user)
-    flash.now[:notice] = t('messages.double_like') unless @like.save
+    post.likes.create(user: current_user)
 
     redirect_to post
   end

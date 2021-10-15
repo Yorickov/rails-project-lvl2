@@ -20,7 +20,6 @@ ru:
     show: Показать
 
   messages:
-    double_like: Вы уже лайкнули эту статью
     comment_can_not_be_empty: Комментарий не может быть пустым
     post_destroyed: Статья удалена
     post_created: Статья создана
